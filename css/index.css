@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --padding-container: 100px 0;
+    --color-title: #001A49
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--padding-container);
+}
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 800px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/planner.jpg");
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+    z-index: -1;
+}
+
+/* Nav */
+
+.nav {
+    --padding-container: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav_title {
+    font-size: 26px;
+    font-weight: 300;
+    font-family: 'Dancing Script', cursive;
+}
+
+.nav_link {
+    margin-left: auto;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap : 2em;
+}
+
+.nav_items {
+    list-style: none;
+}
+
+.nav_menu {
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+}
+
+.nav_links{
+    color: white;
+    text-decoration: none;
+}
+
+.nav_close {
+    display: var(--show, none);
+}
+
+/* Hero container */
+
+.hero_container {
+    max-width: 800px;
+    --padding-container: 0;
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: center;
+    gap: 1em;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.hero_title{
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+.hero_paragraph{
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+
+}
+
+.cta {
+    display:inline-block;
+    background: #2091F9;
+    justify-self: center;
+    color: white;
+    text-decoration: none;
+    padding: 13px 30px;
+    border-radius: 32px;
+}
+
+.cta:hover {
+    transform: scale(1.1);
+    transition: 0.1s;
+}
+
+/* About */
+
+.about {
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--color-title);
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+
+.about_main {
+    padding-top: 80px;
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+    gap: 16em;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    justify-content: center;
+}
+
+.about_icon{
+    background-image: url("../imagenes/canciones.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%) blur(0.6px);
+    border-radius: 10px;
+    display: grid;
+    gap: 1em;
+    justify-items: center;
+    width: 300px;
+    height: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.about_icon2{
+    background-image: url("../imagenes/gestion.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%) blur(0.6px);
+    border-radius: 10px;
+    display: grid;
+    gap: 1em;
+    justify-items: center;
+    width: 300px;
+    height: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.about_icon:hover{
+    filter: grayscale(0%) blur(0px);
+    transform: scale(1.1);  
+    transition: 0.1s;
+}
+
+.about_icon2:hover{
+    filter: grayscale(0%) blur(0px);
+    transform: scale(1.1);  
+    transition: 0.1s;
+}
+
+.about_title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 2rem;
+    margin: 20px;
+}
+
+.about_paragraph {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1.7;
+
+    margin: 20px;
+}
+
+.about_main a {
+    width: 300px; /* Ancho igual al de .about_icon */
+    height: 600px; /* Alto igual al de .about_icon */
+}

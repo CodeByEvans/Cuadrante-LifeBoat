@@ -1,0 +1,12 @@
+.cuadrante {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Mostrar 7 columnas para cada día de la semana */
+    gap: 20px;
+}
+
+.semanas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Mostrar 7 columnas para cada día de la semana */
+    gap: 20px;
+}
+
