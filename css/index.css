@@ -52,10 +52,13 @@ body{
     align-items: center;
 }
 
-.nav_title {
-    font-size: 26px;
-    font-weight: 300;
-    font-family: 'Dancing Script', cursive;
+.nav_logo {
+    display: block;
+    width: 16rem;
+    height: 16rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .nav_link {
@@ -69,6 +72,7 @@ body{
 
 .nav_items {
     list-style: none;
+    font-size: 18px
 }
 
 .nav_menu {
@@ -123,6 +127,7 @@ body{
 .cta:hover {
     transform: scale(1.1);
     transition: 0.1s;
+    
 }
 
 /* About */
@@ -142,11 +147,12 @@ body{
     padding-top: 80px;
     display: grid;
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto -20px;
     gap: 16em;
     overflow: hidden;
     grid-template-columns: repeat(auto-fit, minmax(260px, auto));
     justify-content: center;
+    padding-bottom: 30px;
 }
 
 .about_icon{
@@ -209,7 +215,8 @@ body{
     
     color: white;
     font-size: 1.5rem;
-    line-height: 1.7;
+    line-height: 1.4;
+    text-align: right;
 
     margin: 20px;
 }
@@ -217,4 +224,105 @@ body{
 .about_main a {
     width: 300px; /* Ancho igual al de .about_icon */
     height: 600px; /* Alto igual al de .about_icon */
+}
+
+/* Media Querys */
+
+@media (max-width: 800px) {
+
+    .nav_title {
+        margin-left: -10px;
+    }
+
+    .nav_logo {
+        width: 13rem;
+        height: 13rem;
+    }
+
+    .nav_menu {
+        display: block;
+    }
+    .nav_link-menu {
+        position: fixed;
+        top: 0; 
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: .3s;
+    }
+
+    .nav_link--show {
+        --show: block;
+        opacity: 1;
+        pointer-events: unset;
+    }
+
+    .nav_close {
+        position: absolute; 
+        top: 30px;
+        right: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .nav_link-menu[data-visible="true"] {
+        transform: translateX(0);
+    }
+    .nav_close {
+        display: block;
+    }
+    .hero_title {
+        font-size: 2.5rem;
+    }
+    .hero_paragraph {
+        font-size: 1rem;
+    }
+    .subtitle {
+        font-size: 2.5rem;
+    }
+    .about_main {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        text-align: center;
+    }
+
+    .about_main {
+        gap: 4em;
+        padding-top: 30px;
+        overflow: hidden;
+        grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+        justify-content: center;
+        padding-bottom: 30px;
+    }
+    
+    .about_icon {
+        width: 80%;
+        margin: 0 auto;
+    }   
+    .about_icon2 {
+        width: 80%;
+        margin: 0 auto;
+    }
+} 
+
+.nav_img {
+    filter: invert(100%);
+    width: 60px;
+    height: 46px;
+}
+
+.nav_close {
+    filter: invert(100%);
+    width: 60px;
+    height: 46px;
 }
