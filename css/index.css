@@ -155,37 +155,41 @@ body{
     padding-bottom: 30px;
 }
 
-.about_icon{
-    background-image: url("../imagenes/canciones.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: grayscale(100%) blur(0.6px);
-    border-radius: 10px;
-    display: grid;
-    gap: 1em;
-    justify-items: center;
-    width: 300px;
-    height: 600px;
-    overflow: hidden;
-    margin: 0 auto;
-}
+    .about_icon{
+        position: relative;
+        overflow: hidden;
+        background-image: url("../imagenes/canciones.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;   
+        filter: grayscale(100%) blur(0.6px);
+        border-radius: 10px;
+        display: grid;
+        gap: 1em;
+        justify-items: center;
+        width: 300px;
+        height: 600px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
 
-.about_icon2{
-    background-image: url("../imagenes/gestion.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: grayscale(100%) blur(0.6px);
-    border-radius: 10px;
-    display: grid;
-    gap: 1em;
-    justify-items: center;
-    width: 300px;
-    height: 600px;
-    overflow: hidden;
-    margin: 0 auto;
-}
+    .about_icon2{
+        position: relative;
+        overflow: hidden;
+        background-image: url("../imagenes/gestion.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: grayscale(100%) blur(0.6px);
+        border-radius: 10px;
+        display: grid;
+        gap: 1em;
+        justify-items: center;
+        width: 300px;
+        height: 600px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
 
 .about_icon:hover{
     filter: grayscale(0%) blur(0px);
@@ -200,8 +204,6 @@ body{
 }
 
 .about_title {
-    display: block;
-    visibility: visible;
     position: absolute;
     top: 0;
     left: 0;
@@ -211,8 +213,6 @@ body{
 }
 
 .about_paragraph {
-    display: block;
-    visibility: visible;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -226,8 +226,8 @@ body{
 }
 
 .about_main a {
-    width: 300px; /* Ancho igual al de .about_icon */
-    height: 600px; /* Alto igual al de .about_icon */
+    width: 300px;
+    height: 600px;
 }
 
 /* Media Querys */
