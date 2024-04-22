@@ -317,6 +317,39 @@ body{
         margin-bottom: 30px;
     }
 
+    .about_icon:focus{
+        filter: grayscale(0%) blur(0px);
+        transform: scale(1.1);  
+        transition: 0.1s;
+    }
+
+    .about_icon2:focus{
+        filter: grayscale(0%) blur(0px);
+        transform: scale(1.1);  
+        transition: 0.1s;
+    }
+
+    
+
+    .about_title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        font-size: 2rem;
+        margin: 20px;
+    }
+
+    .about_paragraph {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        
+        color: white;
+        font-size: 1.5rem;
+        line-height: 1.4;
+        text-align: right;
+
 } 
 
 .nav_img {
