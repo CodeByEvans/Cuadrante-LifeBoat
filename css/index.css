@@ -317,34 +317,6 @@ body{
         margin-bottom: 30px;
     }
 
-    .about_icon:hover,
-    .about_icon2:hover {
-        transform: none;
-        filter: none;
-        transition: none;
-    }
-
-    .about_icon:focus,
-    .about_icon2:focus {
-        filter: grayscale(0%) blur(0px);
-        transform: scale(1.1);  
-        transition: 0.4s;
-    }
-
-    .about_title {
-        font-size: 1.5rem;
-        margin: 20px;
-    }
-    .about_paragraph {
-        font-size: 1rem;
-        line-height: 1.4;
-        text-align: justify;
-        margin: 20px;
-    }   
-    .about_icon2 {
-        width: 80%;
-        margin: 0 auto;
-    }
 } 
 
 .nav_img {
