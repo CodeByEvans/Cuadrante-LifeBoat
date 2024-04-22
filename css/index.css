@@ -186,12 +186,12 @@ body{
 
 .about_icon:hover{
     transform: scale(1.1);  
-    transition: filter 0.1s, transform 0.1s;
+    transition: transform 0.1s;
 }
 
 .about_icon2:hover{
     transform: scale(1.1);  
-    transition: filter 0.1s, transform 0.1s;
+    transition: transform 0.1s;
 }
 
 .about_title {
