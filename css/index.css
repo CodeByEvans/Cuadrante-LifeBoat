@@ -155,33 +155,50 @@ body{
     padding-bottom: 30px;
 }
 
-.about_icon{
+.about_icon {
+    position: relative;
+    width: 300px;
+    height: 600px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.about_icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("../imagenes/canciones.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;   
-    border-radius: 10px;
-    display: grid;
-    gap: 1em;
-    justify-items: center;
+    filter: grayscale(100%) blur(0.6px);
+}
+
+.about_icon2 {
+    position: relative;
     width: 300px;
     height: 600px;
+    border-radius: 10px;
     overflow: hidden;
     margin: 0 auto;
 }
-.about_icon2{
+
+.about_icon2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("../imagenes/gestion.jpg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 10px;
-    display: grid;
-    gap: 1em;
-    justify-items: center;
-    width: 300px;
-    height: 600px;
-    overflow: hidden;
-    margin: 0 auto;
+    background-repeat: no-repeat;   
+    filter: grayscale(100%) blur(0.6px);
 }
 
 .about_icon:hover{
@@ -194,13 +211,20 @@ body{
     transition: transform 0.1s;
 }
 
+.about_icon:hover::before {
+    filter: none;
+}
+
+.about_icon2:hover::before {
+    filter: none;
+}
+
 .about_title {
     position: absolute;
     top: 0;
     left: 0;
     color: white;
     font-size: 2rem;
-    opacity: 1;
     margin: 20px;
 }
 
@@ -213,7 +237,6 @@ body{
     font-size: 1.5rem;
     line-height: 1.4;
     text-align: right;
-    opacity: 1;
 
     margin: 20px;
 }
@@ -226,11 +249,6 @@ body{
 /* Media Querys */
 
 @media (max-width: 800px) {
-
-    .nav_title {
-        margin-left: -10px;
-    }
-
     .nav_logo {
         width: 13rem;
         height: 13rem;
@@ -239,6 +257,7 @@ body{
     .nav_menu {
         display: block;
     }
+    
     .nav_link-menu {
         position: fixed;
         top: 0; 
@@ -273,25 +292,22 @@ body{
     .nav_link-menu[data-visible="true"] {
         transform: translateX(0);
     }
+
     .nav_close {
         display: block;
     }
+
     .hero_title {
         font-size: 2.5rem;
     }
+
     .hero_paragraph {
         font-size: 1rem;
         margin: auto 1rem;
     }
+
     .subtitle {
         font-size: 2.5rem;
-    }
-    .about_main {
-        grid-template-columns: 1fr;
-    }
-
-    .about {
-        text-align: center;
     }
 
     .about_main {
@@ -304,35 +320,14 @@ body{
         padding-bottom: 30px;
     }
     
-    .about_icon {
-        width: 80%;
-        margin: 0 auto;
-        margin-bottom: 30px;
-    }
-
+    .about_icon,
     .about_icon2 {
         width: 80%;
         margin: 0 auto;
         margin-bottom: 30px;
     }
-
-    .about_icon:focus{
-        filter: grayscale(0%) blur(0px);
-        transform: scale(1.1);  
-        transition: 0.1s;
-    }
-
-    .about_icon2:focus{
-        filter: grayscale(0%) blur(0px);
-        transform: scale(1.1);  
-        transition: 0.1s;
-    }
-
     
-
     .about_title {
-        visibility: visible;
-        position: absolute;
         top: 0;
         left: 0;
         color: white;
@@ -341,17 +336,15 @@ body{
     }
 
     .about_paragraph {
-        visibility: visible;
-        position: absolute;
         bottom: 0;
         right: 0;
-        
         color: white;
         font-size: 1.3rem;
         line-height: 1.4;
         text-align: right;
+    } 
+}
 
-} 
 
 .nav_img {
     filter: invert(100%);
