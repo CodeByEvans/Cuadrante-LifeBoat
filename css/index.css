@@ -332,15 +332,20 @@ body{
     
 
     .about_title {
+        display: block;
+        visibility: visible;
         position: absolute;
         top: 0;
         left: 0;
         color: white;
         font-size: 2rem;
         margin: 20px;
+        visibility: ;
     }
 
     .about_paragraph {
+        display: block;
+        visibility: visible;
         position: absolute;
         bottom: 0;
         right: 0;
