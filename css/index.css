@@ -338,6 +338,7 @@ body{
     
 
     .about_title {
+        visibility: visible;
         position: absolute;
         top: 0;
         left: 0;
@@ -347,6 +348,7 @@ body{
     }
 
     .about_paragraph {
+        visibility: visible;
         position: absolute;
         bottom: 0;
         right: 0;
@@ -368,4 +370,5 @@ body{
     filter: invert(100%);
     width: 60px;
     height: 46px;
+}
 }
