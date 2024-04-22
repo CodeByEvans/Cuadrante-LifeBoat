@@ -191,17 +191,7 @@ body{
         margin: 0 auto;
     }
 
-.about_icon:hover{
-    filter: grayscale(0%) blur(0px);
-    transform: scale(1.1);  
-    transition: 0.1s;
-}
 
-.about_icon2:hover{
-    filter: grayscale(0%) blur(0px);
-    transform: scale(1.1);  
-    transition: 0.1s;
-}
 
 .about_title {
     position: absolute;
@@ -323,17 +313,7 @@ body{
         margin-bottom: 30px;
     }
 
-    .about_icon:focus{
-        filter: grayscale(0%) blur(0px);
-        transform: scale(1.1);  
-        transition: 0.1s;
-    }
 
-    .about_icon2:focus{
-        filter: grayscale(0%) blur(0px);
-        transform: scale(1.1);  
-        transition: 0.1s;
-    }
 
     
 
