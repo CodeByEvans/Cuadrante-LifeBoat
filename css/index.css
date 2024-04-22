@@ -155,54 +155,43 @@ body{
     padding-bottom: 30px;
 }
 
-    .about_icon{
-        background-image: url("../imagenes/canciones.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;   
-        filter: grayscale(100%) blur(0.6px);
-        border-radius: 10px;
-        display: grid;
-        gap: 1em;
-        justify-items: center;
-        width: 300px;
-        height: 600px;
-        overflow: hidden;
-        margin: 0 auto;
-    }
-
-    .about_icon2{
-        background-image: url("../imagenes/gestion.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: grayscale(100%) blur(0.6px);
-        border-radius: 10px;
-        display: grid;
-        gap: 1em;
-        justify-items: center;
-        width: 300px;
-        height: 600px;
-        overflow: hidden;
-        margin: 0 auto;
-    }
+.about_icon{
+    background-image: url("../imagenes/canciones.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+    border-radius: 10px;
+    display: grid;
+    gap: 1em;
+    justify-items: center;
+    width: 300px;
+    height: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.about_icon2{
+    background-image: url("../imagenes/gestion.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    display: grid;
+    gap: 1em;
+    justify-items: center;
+    width: 300px;
+    height: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+}
 
 .about_icon:hover{
-    filter: grayscale(0%) blur(0px);
     transform: scale(1.1);  
     transition: filter 0.1s, transform 0.1s;
 }
 
 .about_icon2:hover{
-    filter: grayscale(0%) blur(0px);
     transform: scale(1.1);  
     transition: filter 0.1s, transform 0.1s;
-}
-
-.about_icon.hover-effect {
-    filter: grayscale(0%) blur(0px);
-    transform: scale(1.1);  
-    transition: 0.1s;
 }
 
 .about_title {
