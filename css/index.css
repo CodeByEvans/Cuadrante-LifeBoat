@@ -161,7 +161,6 @@ body{
         background-position: center;
         background-repeat: no-repeat;   
         filter: grayscale(100%) blur(0.6px);
-        opacity: 1;
         border-radius: 10px;
         display: grid;
         gap: 1em;
@@ -178,7 +177,6 @@ body{
         background-position: center;
         background-repeat: no-repeat;
         filter: grayscale(100%) blur(0.6px);
-        opacity: 1;
         border-radius: 10px;
         display: grid;
         gap: 1em;
@@ -199,6 +197,12 @@ body{
     filter: grayscale(0%) blur(0px);
     transform: scale(1.1);  
     transition: filter 0.1s, transform 0.1s;
+}
+
+.about_icon.hover-effect {
+    filter: grayscale(0%) blur(0px);
+    transform: scale(1.1);  
+    transition: 0.1s;
 }
 
 .about_title {
