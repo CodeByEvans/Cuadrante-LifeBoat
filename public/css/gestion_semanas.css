@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: "Montserrat", sans-serif;
+}
+
+
+:root {
+    --padding-container: 100px 0;
+    --color-title: #001A49
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--padding-container);
+}
+
+/* Hero */
+
+.hero{
+    width: 100%;
+    height: 32vh;
+    min-height: 300px;
+    max-height: 800px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/guitar.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    z-index: -1;
+}
+
+/* Nav */
+
+.nav {
+    --padding-container: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav_logo {
+    display: block;
+    width: 16rem;
+    height: 16rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.nav_link {
+    margin-left: auto;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap : 2em;
+}
+
+.nav_items {
+    list-style: none;
+    font-size: 16px
+}
+
+.nav_menu {
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+}
+
+.nav_links{
+    color: white;
+    text-decoration: none;
+}
+
+.nav_close {
+    display: var(--show, none);
+}
+
+/* Hero container */
+
+.hero_container {
+    max-width: 800px;
+    --padding-container: 0;
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: center;
+    gap: 1em;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.hero_title{
+    font-size: 3.6rem;
+    margin-bottom: 0;
+}
+
+.hero_paragraph {
+    margin: 10;
+   font-size: 1.4rem;
+}

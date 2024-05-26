@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuadrante</title>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+  // Agregar evento de cambio al campo de fecha
+  document.getElementById('day').addEventListener('change', function(event) {
+    // Obtener la fecha seleccionada por el usuario
+    const selectedDate = event.target.value;
+
+    // Realizar solicitud al servidor para obtener datos asociados a la fecha seleccionada
+    fetch(`/api/cuadrante/${selectedDate}`)
+      .then(response => response.json())
+      .then(data => {
+        // Actualizar los campos del formulario con los datos obtenidos
+        document.getElementById('acousticGuitar').value = data.acousticGuitar;
+        document.getElementById('electricGuitar').value = data.electricGuitar;
+        document.getElementById('bass').value = data.bass;
+        document.getElementById('drums').value = data.drums;
+        document.getElementById('trumpet').value = data.trumpet;
+        document.getElementById('acousticGuitar2').value = data.acousticGuitar2;
+        document.getElementById('piano').value = data.piano;
+        document.getElementById('director').value = data.director;
+        document.getElementById('voz1').value = data.voz1;
+        document.getElementById('voz2').value = data.voz2;
+        document.getElementById('voz3').value = data.voz3;
+        document.getElementById('voz4').value = data.voz4;
+        document.getElementById('song1').value = data.song1;
+        document.getElementById('song2').value = data.song2;
+        document.getElementById('song3').value = data.song3;
+        // Agregar el resto de campos aquí
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
+
+  // Evento submit del formulario para enviar los datos actualizados al servidor
+  document.getElementById('gestionForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Obtener los datos del formulario y enviarlos al servidor
+    const formData = new FormData(this);
+    fetch('/api/cuadrante', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Object.fromEntries(formData)),
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Datos actualizados correctamente');
+        // Puedes hacer algo aquí si la actualización fue exitosa
+      } else {
+        console.error('Error al actualizar los datos');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+});
+    </script>
+
+    <link
+      rel="shortcut icon"
+      href="imagenes/lifeboat.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="css/gestion.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <div class="nav_title">
+          <a href="/">
+            <img class="nav_logo" src="imagenes/lifeboat.png" alt="" />
+          </a>
+        </div>
+
+        <ul class="nav_link nav_link-menu">
+          <il class="nav_items">
+            <a href="/" class="nav_links">Inicio</a>
+          </il>
+          <il class="nav_items">
+            <a href="cuadrante" class="nav_links">Cuadrante</a>
+          </il>
+          <il class="nav_items">
+            <a href="#" class="nav_links">Repertorio</a>
+          </il>
+          <il class="nav_items">
+            <a href="/gestion" class="nav_links">Gestión</a>
+          </il>
+
+          <img src="imagenes/close.svg" class="nav_close" alt="img_close" />
+        </ul>
+
+        <div class="nav_menu">
+          <img src="imagenes/menu_icon.svg" class="nav_img" alt="img_menu" />
+        </div>
+      </nav>
+
+      <section class="hero_container container">
+        <h1 class="hero_title">Gestión del Cuadrante</h1>
+        <p class="hero_paragraph">Gestión del repertorio</p>
+      </section>
+    </header>
+
+  <main>
+    <section class="formContainer">
+      <header>Formulario de Gestión</header>
+      <form id="gestionForm" class="form">
+        
+        <div class="input-box" id="day-box">
+          <label for="day" class="day">Día</label>
+          <input type="date" id="day" name="day" required>
+        </div>
+
+        <section class="column">
+          <div class="input-box">
+            <label for="acousticGuitar" class="acousticGuitar">Guitarra Acústica</label>
+            <input type="text" id="acousticGuitar" name="acousticGuitar">
+          </div>
+          
+          <div class="input-box">
+            <label for="electricGuitar" class="electricGuitar">Guitarra Eléctrica</label>
+            <input type="text" id="electricGuitar" name="electricGuitar">
+          </div>
+          
+          <div class="input-box">
+            <label for="bass" class="bass">Bajo</label>
+            <input type="text" id="bass" name="bass">
+          </div>
+    
+          <div class="input-box">
+            <label for="drums" class="drums">Batería</label>
+            <input type="text"  id="drums" name="drums">
+          </div>
+
+          <div class="input-box">
+            <label for="trumpet" class="trumpet">Trompeta</label>
+            <input type="text" id="trumpet" name="trumpet">
+          </div>
+    
+          <div class="input-box">
+            <label for="acousticGuitar2" class="acousticGuitar2">Guitarra Acústica 2</label>
+            <input type="text" id="acousticGuitar2" name="acousticGuitar2">
+          </div>
+
+          <div class="input-box">
+            <label for="piano" class="piano">Piano</label>
+            <input type="text" id="piano" name="piano">
+          </div>
+  
+          <div class="input-box">
+            <label for="director" class="director">Director</label>
+            <input type="text" id="director" name="director">
+          </div>
+
+          <div class="input-box">
+            <label for="voz_1" class="voz1">Voz 1</label>
+            <input type="text" id="voz1" name="voz1">
+          </div>
+    
+          <div class="input-box">
+            <label for="voz_2" class="voz2">Voz 2</label>
+            <input type="text" id="voz2" name="voz2">
+          </div>
+
+          <div class="input-box">
+            <label for="voz_3" class="voz3">Voz 3</label>
+            <input type="text" id="voz3" name="voz3">
+          </div>
+    
+          <div class="input-box">
+            <label for="voz_4" class="voz4">Voz 4</label>
+            <input type="text" id="voz4" name="voz4">
+          </div>
+
+          <div class="input-box">
+            <label for="song_1" class="song1">Canción 1</label>
+            <input type="text" id="song1" name="song1">
+          </div>
+  
+          <div class="input-box">
+            <label for="song_2" class="song2">Canción 2</label>
+            <input type="text" id="song2" name="song2">
+          </div>
+
+        </section>
+        <div class="input-box">
+          <label for="song_3" class="song3">Canción 3</label>
+          <input type="text" id="song3" name="song3">
+        </div>
+  
+        <button type="submit">Actualizar Cuadrante</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('gestionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const data = {
+          day: document.getElementById('day').value,
+          acousticGuitar: document.getElementById('acousticGuitar').value,
+          electricGuitar: document.getElementById('electricGuitar').value,
+          bass: document.getElementById('bass').value,
+          drums: document.getElementById('drums').value,
+          trumpet: document.getElementById('trumpet').value,
+          acousticGuitar2: document.getElementById('acousticGuitar2').value,
+          piano: document.getElementById('piano').value,
+          director: document.getElementById('director').value,
+          voz1: document.getElementById('voz1').value,
+          voz2: document.getElementById('voz2').value,
+          voz3: document.getElementById('voz3').value,
+          voz4: document.getElementById('voz4').value,
+          song1: document.getElementById('song1').value,
+          song2: document.getElementById('song2').value,
+          song3: document.getElementById('song3').value
+          // Captura los demás campos aquí
+        };
+        fetch('/api/cuadrante', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+    });
+  </script>
+
+  <script src="/js/menu.js"></script>
+</body>
+</html>

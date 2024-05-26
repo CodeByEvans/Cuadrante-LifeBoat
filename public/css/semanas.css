@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: "Montserrat", sans-serif;
+}
+
+
+:root {
+    --padding-container: 100px 0;
+    --color-title: #001A49
+}
+
+a {
+    outline: none; 
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--padding-container);
+}
+
+/* Hero */
+
+.hero{
+    width: 100%;
+    height: 32vh;
+    min-height: 300px;
+    max-height: 800px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    color: white;
+}
+
+
+/* Nav */
+
+.nav {
+    --padding-container: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav_logo {
+    display: block;
+    width: 16rem;
+    height: 16rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.nav_link {
+    margin-left: auto;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap : 2em;
+}
+
+.nav_items {
+    list-style: none;
+    font-size: 18px;
+}
+
+.nav_links:hover {
+    color: #26B3EC;
+}
+.nav_menu {
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+}
+
+.nav_links{
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav_close {
+    display: var(--show, none);
+}
+
+/* Hero container */
+
+.hero_container {
+    max-width: 800px;
+    --padding-container: 0;
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: center;
+    gap: 1em;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.hero_title{
+    font-size: 3.4rem;
+    margin: 10px;
+}
+
+.hero_paragraph {
+    margin: 0;
+   font-size: 1.4rem;
+}
+
+/* Tabla */
+
+main body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+
+  .styled-table tr th {
+    background-color: rgba(18, 157, 237, 0.296);
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+   .styled-table tr td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .styled-table tr:nth-last-of-type(odd) {
+    background-color: hwb(0 94% 10%)
+  }
+
+
+
+  @media (max-width: 800px) {
+    .nav_logo {
+      width: 13rem;
+      height: 13rem;
+    }
+  
+    .nav_menu {
+      display: block;
+    }
+  
+    .nav_link-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s;
+    }
+  
+    .nav_link--show {
+      --show: block;
+      opacity: 1;
+      pointer-events: unset;
+    }
+  
+    .nav_close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 30px;
+      cursor: pointer;
+    }
+  
+    .nav_link-menu[data-visible="true"] {
+      transform: translateX(0);
+    }
+  
+    .nav_close {
+      display: block;
+    }
+  
+    .hero_title {
+      font-size: 1.8rem;
+    }
+  
+    .hero_paragraph {
+      font-size: 1.3rem;
+      margin: auto 1rem;
+    }
+  
+    .week_icon {
+      width: 250px;
+      height: 250px;
+    }
+  
+    .week_title {
+      font-size: 1.5rem;
+    }
+  
+    .week_paragraph {
+      font-size: 1.3rem;
+    }
+    .styled-table {
+        display: grid;
+        grid-template-columns: auto 1fr; /* Dividir la tabla en dos columnas, una para el encabezado y otra para el cuerpo */
+        
+    }
+
+    .styled-table thead {
+        grid-column: 1; /* Colocar el encabezado en la primera columna */
+    }
+
+    .styled-table tbody {
+        display: grid;
+    }
+
+    .styled-table td,
+    .styled-table th {
+        display: block; /* Convertir td y th en elementos de bloque */
+        height: 30px;
+        border: none; /* Eliminar los bordes internos entre celdas */
+        padding: 8px; /* Añadir espaciado interno */
+    }
+
+    .styled-table tr:nth-last-of-type(odd) {
+        background: transparent;
+    }
+
+}
+
+.nav_img {
+    filter: invert(100%);
+    width: 60px;
+    height: 46px;
+}
+
+.nav_close {
+    filter: invert(100%);
+    width: 60px;
+    height: 46px;
+}

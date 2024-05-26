@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuarta Semana</title>
+
+    <style>
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/microphone.jpg");
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        z-index: -1;
+      }
+    </style>
+
+    <script>
+      function getDayName(dateString) {
+        const days = [
+          "Domingo",
+          "Lunes",
+          "Martes",
+          "Miercoles",
+          "Jueves",
+          "Viernes",
+          "Sabado",
+        ];
+        const date = new Date(dateString);
+        const day = date.getDate();
+        return `${days[date.getDay()]} ${day}`;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Crear el encabezado de la tabla
+        const cuadranteDiv = document.getElementById("cuadrante");
+        cuadranteDiv.innerHTML = `
+          <table id="semana1" class="styled-table">
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>Guitarra Acústica</th>
+                <th>Guitarra Eléctrica</th>
+                <th>Bajo</th>
+                <th>Batería</th>
+                <th>Trompeta</th>
+                <th>Acústica 2</th>
+                <th>Piano</th>
+                <th>Director</th>
+                <th>Voz 1</th>
+                <th>Voz 2</th>
+                <th>Voz 3</th>
+                <th>Voz 4</th>
+                <th>Canción 1</th>
+                <th>Canción 2</th>
+                <th>Canción 3</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+          </table>`;
+
+        const daysToFetch = ["2024-06-27", "2024-06-29", "2024-06-30"];
+
+        // Almacena los datos recibidos del servidor en un array
+        const fetchedData = [];
+
+        // Función para agregar filas de datos a la tabla en el orden correcto
+        function addRowsToTable() {
+          // Ordena los datos por fecha antes de agregar las filas a la tabla
+          fetchedData.sort((a, b) => (a.day > b.day ? 1 : -1));
+
+          // Obtén el cuerpo de la tabla
+          const tableBody = document.getElementById("tableBody");
+
+          // Limpia el contenido existente en el cuerpo de la tabla
+          tableBody.innerHTML = "";
+
+          // Itera sobre los datos ordenados y agrega las filas a la tabla
+          fetchedData.forEach((data) => {
+            const dayName = getDayName(data.day);
+            tableBody.innerHTML += `
+      <tr>
+        <td>${dayName}</td>
+        <td>${data.acousticGuitar || ""}</td>
+        <td>${data.electricGuitar || ""}</td>
+        <td>${data.bass || ""}</td>
+        <td>${data.drums || ""}</td>
+        <td>${data.trumpet || ""}</td>
+        <td>${data.acousticGuitar2 || ""}</td>
+        <td>${data.piano || ""}</td>
+        <td>${data.director || ""}</td>
+        <td>${data.voz1 || ""}</td>
+        <td>${data.voz2 || ""}</td>
+        <td>${data.voz3 || ""}</td>
+        <td>${data.voz4 || ""}</td>
+        <td>${data.song1 || ""}</td>
+        <td>${data.song2 || ""}</td>
+        <td>${data.song3 || ""}</td>
+      </tr>`;
+          });
+        }
+
+        // Realiza las solicitudes fetch y almacena los datos en fetchedData
+        daysToFetch.forEach((date) => {
+          fetch(`/api/cuadrante/${date}`)
+            .then((response) => response.json())
+            .then((data) => {
+              fetchedData.push(data);
+              addRowsToTable(); // Llama a esta función cada vez que se recibe un nuevo conjunto de datos
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      });
+    </script>
+
+    <link
+      rel="shortcut icon"
+      href="../imagenes/lifeboat.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/semanas.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <div class="nav_title">
+          <a href="/">
+            <img class="nav_logo" src="../imagenes/lifeboat.png" alt="" />
+          </a>
+        </div>
+
+        <ul class="nav_link nav_link-menu">
+          <il class="nav_items">
+            <a href="/" class="nav_links">Inicio</a>
+          </il>
+          <il class="nav_items">
+            <a href="/cuadrante" class="nav_links">Cuadrante</a>
+          </il>
+          <il class="nav_items">
+            <a href="#" class="nav_links">Repertorio</a>
+          </il>
+          <il class="nav_items">
+            <a href="/gestion" class="nav_links">Gestión</a>
+          </il>
+          <img src="../imagenes/close.svg" class="nav_close" alt="img_close" />
+        </ul>
+        <div class="nav_menu">
+          <img src="../imagenes/menu_icon.svg" class="nav_img" alt="img_menu" />
+        </div>
+      </nav>
+
+      <section class="hero_container container">
+        <h1 class="hero_title">Quinta Semana</h1>
+        <p class="hero_paragraph">24 al 30 de junio</p>
+      </section>
+    </header>
+
+    <main>
+      <div id="cuadrante"></div>
+    </main>
+
+    <script>
+      function actualizarColumnas(numDias) {
+        // Genera el estilo CSS para el número de columnas especificado
+        const style = document.getElementById('dynamic-styles');
+        let css = '.styled-table tbody { display: grid; grid-template-columns: ';
+        for (let i = 0; i < numDias; i++) {
+            css += '1fr ';
+        }
+        css += '; }';
+        style.textContent = css;
+      }
+  
+      document.addEventListener("DOMContentLoaded", () => {
+        const daysToFetch = ["2024-06-27", "2024-06-29", "2024-06-30"];
+        let totalDias = -1;
+  
+        // Almacena los datos recibidos del servidor en un array
+        const fetchedData = [];
+  
+        // Función para agregar filas de datos a la tabla en el orden correcto
+        function addRowsToTable() {
+          // Ordena los datos por fecha antes de agregar las filas a la tabla
+          fetchedData.sort((a, b) => (a.day > b.day ? 1 : -1));
+  
+          // Obtén el cuerpo de la tabla
+          const tableBody = document.getElementById("tableBody");
+  
+          // Limpia el contenido existente en el cuerpo de la tabla
+          tableBody.innerHTML = "";
+  
+          // Itera sobre los datos ordenados y agrega las filas a la tabla
+          fetchedData.forEach((data) => {
+            const dayName = getDayName(data.day);
+            tableBody.innerHTML += `
+              <tr>
+                <td>${dayName}</td>
+                <td>${data.acousticGuitar || ""}</td>
+                <td>${data.electricGuitar || ""}</td>
+                <td>${data.bass || ""}</td>
+                <td>${data.drums || ""}</td>
+                <td>${data.trumpet || ""}</td>
+                <td>${data.acousticGuitar2 || ""}</td>
+                <td>${data.piano || ""}</td>
+                <td>${data.director || ""}</td>
+                <td>${data.voz1 || ""}</td>
+                <td>${data.voz2 || ""}</td>
+                <td>${data.voz3 || ""}</td>
+                <td>${data.voz4 || ""}</td>
+                <td>${data.song1 || ""}</td>
+                <td>${data.song2 || ""}</td>
+                <td>${data.song3 || ""}</td>
+              </tr>`;
+            totalDias++;
+          });
+  
+          // Llama a esta función para actualizar las columnas con el número total de días
+          actualizarColumnas(totalDias);
+        }
+  
+        // Realiza las solicitudes fetch y almacena los datos en fetchedData
+        daysToFetch.forEach((date) => {
+          fetch(`/api/cuadrante/${date}`)
+            .then((response) => response.json())
+            .then((data) => {
+              fetchedData.push(data);
+              addRowsToTable(); // Llama a esta función cada vez que se recibe un nuevo conjunto de datos
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      });
+    </script>
+
+    <script src="../../js/menu.js"></script>
+  </body>
+</html>
