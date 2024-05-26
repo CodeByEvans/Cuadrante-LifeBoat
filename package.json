@@ -4,7 +4,9 @@
   "description": "Este es el proyect del cuadrante de alabanza.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "start_netlify" : ":/node_modules/.bin/netlify dev",
+    "build" : ":/node_modules/.bin/netlify build"
   },
   "keywords": [
     "node",
