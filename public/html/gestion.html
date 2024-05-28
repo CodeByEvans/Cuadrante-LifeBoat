@@ -53,8 +53,12 @@
     })
     .then(response => {
       if (response.ok) {
-        console.log('Datos actualizados correctamente');
-        // Puedes hacer algo aquí si la actualización fue exitosa
+        document.getElementById('successMessage').textContent = 'Datos actualizados correctamente';
+        document.getElementById('successMessage').style.display = 'block';
+        setTimeout(() => {
+          // Oculta el mensaje después de 3 segundos
+          document.getElementById('successMessage').style.display = 'none';
+        }, 3000);
       } else {
         console.error('Error al actualizar los datos');
       }
@@ -196,7 +200,9 @@
           <label for="song_3" class="song3">Canción 3</label>
           <input type="text" id="song3" name="song3">
         </div>
-  
+        
+        <div id="successMessage" style="display: none;"></div>
+
         <button type="submit">Actualizar Cuadrante</button>
       </form>
     </section>

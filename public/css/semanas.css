@@ -145,6 +145,29 @@ main body {
     background-color: hwb(0 94% 10%)
   }
 
+  .button_container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 34px;
+    background-color: hsla(202, 86%, 50%, 0.219)
+  }
+
+  .button_right {
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    right: 0;
+  }
+
+  .button_left {
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    left: 0;
+  }
+
+
 
 
   @media (max-width: 800px) {
@@ -220,29 +243,66 @@ main body {
     .styled-table {
         display: grid;
         grid-template-columns: auto 1fr; /* Dividir la tabla en dos columnas, una para el encabezado y otra para el cuerpo */
-        
+        border-bottom-left-radius: 20px;
     }
 
     .styled-table thead {
         grid-column: 1; /* Colocar el encabezado en la primera columna */
+        position: sticky;
+        width: 140px;
     }
 
     .styled-table tbody {
-        display: grid;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
+      grid-auto-columns: 240px;
+      overflow-x: scroll;
     }
 
     .styled-table td,
     .styled-table th {
         display: block; /* Convertir td y th en elementos de bloque */
-        height: 30px;
+        height: 34px;
         border: none; /* Eliminar los bordes internos entre celdas */
         padding: 8px; /* Añadir espaciado interno */
+        text-align: center !important;
     }
 
     .styled-table tr:nth-last-of-type(odd) {
         background: transparent;
     }
 
+    .button_container {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 34px;
+      background-color: hwb(202 7% 7% / 0);
+      padding-top: 4px;
+    }
+
+    .button_right {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 0;
+      border: none;
+      border-radius: 4px;
+      background-color: rgb(110, 213, 238);
+      box-shadow: 0px 2px 4px #1617178c; /* Sombra suave */
+    }
+    
+    .button_left {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 0;
+      border: none;
+      border-radius: 4px;
+      background-color: rgb(110, 213, 238);
+      box-shadow: 0px 2px 4px #1617178c; /* Sombra suave */
+    }
 }
 
 .nav_img {

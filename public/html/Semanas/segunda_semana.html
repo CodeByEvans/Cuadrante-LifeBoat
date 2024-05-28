@@ -16,7 +16,8 @@
         background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/bass.jpg");
         background-size: cover;
         background-position: center;
-        border-radius: 8px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
         z-index: -1;
       }
     </style>
@@ -168,6 +169,25 @@
 
     <main>
       <div id="cuadrante"></div>
+
+      <section class="button_container">
+        <div class="button_right">
+          <a href="/cuadrante/tercera_semana" class="button_action">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>   
+          </a>
+        </div>
+    
+        <div class="button_left">
+          <a href="/cuadrante/primera_semana" class="button_action">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+            
+          </a>
+        </div>
+      </section>
     </main>
 
     <script>
@@ -176,71 +196,80 @@
         const style = document.getElementById('dynamic-styles');
         let css = '.styled-table tbody { display: grid; grid-template-columns: ';
         for (let i = 0; i < numDias; i++) {
-            css += '1fr ';
+          css += '1fr ';
         }
         css += '; }';
         style.textContent = css;
       }
-  
+    
+      function getDayName(dateString) {
+        const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+        const date = new Date(dateString);
+        const day = date.getDate();
+        return `${days[date.getDay()]} ${day}`;
+      }
+    
       document.addEventListener("DOMContentLoaded", () => {
-        const daysToFetch = ["2024-06-06", "2024-06-08", "2024-06-09"];
-        let totalDias = 1;
-  
-        // Almacena los datos recibidos del servidor en un array
-        const fetchedData = [];
-  
-        // Función para agregar filas de datos a la tabla en el orden correcto
-        function addRowsToTable() {
-          // Ordena los datos por fecha antes de agregar las filas a la tabla
-          fetchedData.sort((a, b) => (a.day > b.day ? 1 : -1));
-  
-          // Obtén el cuerpo de la tabla
-          const tableBody = document.getElementById("tableBody");
-  
-          // Limpia el contenido existente en el cuerpo de la tabla
-          tableBody.innerHTML = "";
-  
-          // Itera sobre los datos ordenados y agrega las filas a la tabla
-          fetchedData.forEach((data) => {
-            const dayName = getDayName(data.day);
-            tableBody.innerHTML += `
-              <tr>
-                <td>${dayName}</td>
-                <td>${data.acousticGuitar || ""}</td>
-                <td>${data.electricGuitar || ""}</td>
-                <td>${data.bass || ""}</td>
-                <td>${data.drums || ""}</td>
-                <td>${data.trumpet || ""}</td>
-                <td>${data.acousticGuitar2 || ""}</td>
-                <td>${data.piano || ""}</td>
-                <td>${data.director || ""}</td>
-                <td>${data.voz1 || ""}</td>
-                <td>${data.voz2 || ""}</td>
-                <td>${data.voz3 || ""}</td>
-                <td>${data.voz4 || ""}</td>
-                <td>${data.song1 || ""}</td>
-                <td>${data.song2 || ""}</td>
-                <td>${data.song3 || ""}</td>
-              </tr>`;
-            totalDias++;
-          });
-  
-          // Llama a esta función para actualizar las columnas con el número total de días
-          actualizarColumnas(totalDias);
-        }
-  
-        // Realiza las solicitudes fetch y almacena los datos en fetchedData
-        daysToFetch.forEach((date) => {
-          fetch(`/api/cuadrante/${date}`)
-            .then((response) => response.json())
-            .then((data) => {
-              fetchedData.push(data);
-              addRowsToTable(); // Llama a esta función cada vez que se recibe un nuevo conjunto de datos
-            })
-            .catch((error) => {
-              console.error("Error:", error);
+        if (window.innerWidth <= 800) {
+          const daysToFetch = ["2024-06-06", "2024-06-08", "2024-06-09"];
+          let totalDias = -1;
+    
+          // Almacena los datos recibidos del servidor en un array
+          const fetchedData = [];
+    
+          // Función para agregar filas de datos a la tabla en el orden correcto
+          function addRowsToTable() {
+            // Ordena los datos por fecha antes de agregar las filas a la tabla
+            fetchedData.sort((a, b) => (a.day > b.day ? 1 : -1));
+    
+            // Obtén el cuerpo de la tabla
+            const tableBody = document.getElementById("tableBody");
+    
+            // Limpia el contenido existente en el cuerpo de la tabla
+            tableBody.innerHTML = "";
+    
+            // Itera sobre los datos ordenados y agrega las filas a la tabla
+            fetchedData.forEach((data) => {
+              const dayName = getDayName(data.day);
+              tableBody.innerHTML += `
+                <tr>
+                  <td>${dayName}</td>
+                  <td>${data.acousticGuitar || ""}</td>
+                  <td>${data.electricGuitar || ""}</td>
+                  <td>${data.bass || ""}</td>
+                  <td>${data.drums || ""}</td>
+                  <td>${data.trumpet || ""}</td>
+                  <td>${data.acousticGuitar2 || ""}</td>
+                  <td>${data.piano || ""}</td>
+                  <td>${data.director || ""}</td>
+                  <td>${data.voz1 || ""}</td>
+                  <td>${data.voz2 || ""}</td>
+                  <td>${data.voz3 || ""}</td>
+                  <td>${data.voz4 || ""}</td>
+                  <td>${data.song1 || ""}</td>
+                  <td>${data.song2 || ""}</td>
+                  <td>${data.song3 || ""}</td>
+                </tr>`;
+              totalDias++;
             });
-        });
+    
+            // Llama a esta función para actualizar las columnas con el número total de días
+            actualizarColumnas(totalDias);
+          }
+    
+          // Realiza las solicitudes fetch y almacena los datos en fetchedData
+          daysToFetch.forEach((date) => {
+            fetch(`/api/cuadrante/${date}`)
+              .then((response) => response.json())
+              .then((data) => {
+                fetchedData.push(data);
+                addRowsToTable(); // Llama a esta función cada vez que se recibe un nuevo conjunto de datos
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
+          });
+        }
       });
     </script>
 

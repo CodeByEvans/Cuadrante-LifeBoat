@@ -4,7 +4,7 @@
   "description": "Este es el proyect del cuadrante de alabanza.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [
     "node",

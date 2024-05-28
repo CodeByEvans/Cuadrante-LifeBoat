@@ -310,6 +310,12 @@ main body {
     grid-column-gap: 50px;
 }
 
+#successMessage {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #26B3EC;
+}
 
 
 /* mobile */
@@ -388,6 +394,7 @@ main body {
 
     .formContainer {
         padding: 40px;
+        border-radius: 0;
     }
 
     .form {
@@ -413,6 +420,7 @@ main body {
     .form button {
         width: 250px;
     }
+    
 
 }
 
