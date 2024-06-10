@@ -10,7 +10,13 @@ export const conexion = createConnection({
     port: DB_PORT
   });
 
-
+  conexion.connect(function(error) {
+    if (error) {
+      throw error;
+    }else {
+    console.log("Base de datos conectada");
+    }
+  });
   
 
  

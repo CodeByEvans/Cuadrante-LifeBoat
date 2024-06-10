@@ -16,35 +16,28 @@ app.use(express.json());
 
 
 // Servir archivos estáticos desde el directorio 'public'
-app.use('/css', express.static(path.join(__dirname, 'public/css')));
-app.use('/js', express.static(path.join(__dirname, 'public/js')));
-app.use('/imagenes', express.static(path.join(__dirname, 'public/imagenes')));
-app.use('/html', express.static(path.join(__dirname, 'public/html')));
+app.use('/css', express.static(path.join(__dirname, '../public/css')));
+app.use('/js', express.static(path.join(__dirname, '../public/js')));
+app.use('/imagenes', express.static(path.join(__dirname, '../public/imagenes')));
+app.use('/html', express.static(path.join(__dirname, '../public/html')));
 
 // Ruta para servir index.html
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/html/index.html'));
+    res.sendFile(path.join(__dirname, '../public/html/index.html'));
 });
 
 // Ruta para servir cuadrante.html
 app.get("/cuadrante", (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/html/cuadrante.html'));
+    res.sendFile(path.join(__dirname, '../public/html/cuadrante.html'));
 });
 
 app.get("/validacion", (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/html/validacion_gestion.html'));
+  res.sendFile(path.join(__dirname, '../public/html/validacion_gestion.html'));
 });
 
 // Ruta para server gestion.html
 app.get("/gestion", (req, res) => {
-  conexion.connect(function(error) {
-    if (error) {
-      throw error;
-    }else {
-    console.log("Base de datos conectada");
-    }
-  });
-    res.sendFile(path.join(__dirname, 'public/html/gestion.html'));
+    res.sendFile(path.join(__dirname, '../public/html/gestion.html'));
 });
 
 
@@ -52,62 +45,27 @@ app.get("/gestion", (req, res) => {
 
 // Ruta para primera semana.html
 app.get("/cuadrante/primera_semana", (req, res) => {
-  conexion.connect(function(error) {
-    if (error) {
-      throw error;
-    }else {
-    console.log("Base de datos conectada");
-    }
-  });
-    res.sendFile(path.join(__dirname, 'public/html/Semanas/primera_semana.html'));
+    res.sendFile(path.join(__dirname, '../public/html/Semanas/primera_semana.html'));
 });
 
 // Ruta para segunda semana.html
 app.get("/cuadrante/segunda_semana", (req, res) => {
-  conexion.connect(function(error) {
-    if (error) {
-      throw error;
-    }else {
-    console.log("Base de datos conectada");
-    }
-  });
-  res.sendFile(path.join(__dirname, 'public/html/Semanas/segunda_semana.html'));
+  res.sendFile(path.join(__dirname, '../public/html/Semanas/segunda_semana.html'));
 });
 
 // Ruta para tercera semana.html
 app.get("/cuadrante/tercera_semana", (req, res) => {
-  conexion.connect(function(error) {
-    if (error) {
-      throw error;
-    }else {
-    console.log("Base de datos conectada");
-    }
-  });
-  res.sendFile(path.join(__dirname, 'public/html/Semanas/tercera_semana.html'));
+  res.sendFile(path.join(__dirname, '../public/html/Semanas/tercera_semana.html'));
 });
 
 // Ruta para cuarta semana.html
 app.get("/cuadrante/cuarta_semana", (req, res) => {
-  conexion.connect(function(error) {
-    if (error) {
-      throw error;
-    }else {
-    console.log("Base de datos conectada");
-    }
-  });
-  res.sendFile(path.join(__dirname, 'public/html/Semanas/cuarta_semana.html'));
+  res.sendFile(path.join(__dirname, '../public/html/Semanas/cuarta_semana.html'));
 });
 
 // Ruta para quinta semana.html
 app.get("/cuadrante/quinta_semana", (req, res) => {
-  conexion.connect(function(error) {
-    if (error) {
-      throw error;
-    }else {
-    console.log("Base de datos conectada");
-    }
-  });
-  res.sendFile(path.join(__dirname, 'public/html/Semanas/quinta_semana.html'));
+  res.sendFile(path.join(__dirname, '../public/html/Semanas/quinta_semana.html'));
 });
 
 
