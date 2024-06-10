@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { conexion } from './db.js';
-import { port } from './config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -219,7 +218,4 @@ app.post('/api/cuadrante', async (req, res) => {
   }
 });
 
-
-app.listen(port, () => {
-  console.log(`Servidor ejecutándose en el puerto ${port}`);
-});
+export default app;
