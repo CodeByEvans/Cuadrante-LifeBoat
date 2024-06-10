@@ -1,12 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
-const port = process.env.PORT || 3000;
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { conexion } from './db.js';
+import { port } from './config.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 const app = express();
 
+
 // Middleware para parsear JSON
 app.use(express.json());
+
 
 // Servir archivos estáticos desde el directorio 'public'
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
@@ -24,133 +31,162 @@ app.get("/cuadrante", (req, res) => {
     res.sendFile(path.join(__dirname, 'public/html/cuadrante.html'));
 });
 
+app.get("/validacion", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/validacion_gestion.html'));
+});
+
 // Ruta para server gestion.html
 app.get("/gestion", (req, res) => {
+  conexion.connect(function(error) {
+    if (error) {
+      throw error;
+    }else {
+    console.log("Base de datos conectada");
+    }
+  });
     res.sendFile(path.join(__dirname, 'public/html/gestion.html'));
 });
+
 
 // ------------------------------------------------
 
 // Ruta para primera semana.html
 app.get("/cuadrante/primera_semana", (req, res) => {
+  conexion.connect(function(error) {
+    if (error) {
+      throw error;
+    }else {
+    console.log("Base de datos conectada");
+    }
+  });
     res.sendFile(path.join(__dirname, 'public/html/Semanas/primera_semana.html'));
 });
 
 // Ruta para segunda semana.html
 app.get("/cuadrante/segunda_semana", (req, res) => {
+  conexion.connect(function(error) {
+    if (error) {
+      throw error;
+    }else {
+    console.log("Base de datos conectada");
+    }
+  });
   res.sendFile(path.join(__dirname, 'public/html/Semanas/segunda_semana.html'));
 });
 
 // Ruta para tercera semana.html
 app.get("/cuadrante/tercera_semana", (req, res) => {
+  conexion.connect(function(error) {
+    if (error) {
+      throw error;
+    }else {
+    console.log("Base de datos conectada");
+    }
+  });
   res.sendFile(path.join(__dirname, 'public/html/Semanas/tercera_semana.html'));
 });
 
 // Ruta para cuarta semana.html
 app.get("/cuadrante/cuarta_semana", (req, res) => {
+  conexion.connect(function(error) {
+    if (error) {
+      throw error;
+    }else {
+    console.log("Base de datos conectada");
+    }
+  });
   res.sendFile(path.join(__dirname, 'public/html/Semanas/cuarta_semana.html'));
 });
 
 // Ruta para quinta semana.html
 app.get("/cuadrante/quinta_semana", (req, res) => {
+  conexion.connect(function(error) {
+    if (error) {
+      throw error;
+    }else {
+    console.log("Base de datos conectada");
+    }
+  });
   res.sendFile(path.join(__dirname, 'public/html/Semanas/quinta_semana.html'));
 });
 
+
 // ------------------------------------------------
 
-// Abre una base de datos
-let db = new sqlite3.Database('./cuadrante.db', (err) => {
-    if (err) {
-      console.error(err.message);
+ // Ruta para obtener los datos para una fecha específica
+ app.get('/api/cuadrante/:date', (req, res) => {
+  const { date } = req.params;
+
+  // Consulta SQL para obtener los datos para la fecha especificada
+  const sql = `SELECT * FROM cuadrante WHERE day = ?`;
+
+  // Ejecutar la consulta con la fecha como parámetro
+  conexion.query(sql, [date], (error, results) => {
+    if (error) {
+      console.error('Error al ejecutar la consulta: ' + error.message);
+      res.status(500).json({ error: 'Error al obtener datos de la base de datos' });
+      return;
     }
-    console.log('Conectado a la base de datos SQLite.');
+
+    if (results.length === 0) {
+      // No se encontraron datos para la fecha especificada
+      res.status(404).json({ error: 'No se encontraron datos para la fecha especificada' });
+      return;
+    }
+
+    // Devolver los resultados como JSON
+    res.json(results[0]);
   });
-  
-  // Crear una tabla (ejemplo)
-  db.run(`CREATE TABLE IF NOT EXISTS cuadrante (
-    day TEXT PRIMARY KEY,
-    acousticGuitar TEXT,
-    electricGuitar TEXT,
-    bass TEXT,
-    drums TEXT,
-    trumpet TEXT,
-    acousticGuitar2 TEXT,
-    piano TEXT,
-    director TEXT,
-    voz1 TEXT,
-    voz2 TEXT,
-    voz3 TEXT,
-    voz4 TEXT,
-    song1 TEXT,
-    song2 TEXT,
-    song3 TEXT
-  )`);
-  
-  // Ruta para insertar o actualizar datos en la base de datos
-  app.post('/api/cuadrante', (req, res) => {
-    const { day, acousticGuitar, electricGuitar, bass, drums, trumpet, acousticGuitar2, piano, director, voz1, voz2, voz3, voz4, song1, song2, song3 } = req.body;
+});
 
-    // Verifica si ya existe un registro con la misma clave primaria (day)
-    db.get('SELECT * FROM cuadrante WHERE day = ?', [day], (err, row) => {
-      if (err) {
-        return res.status(500).json({ error: err.message });
-      }
+// Ruta para insertar o actualizar datos en la base de datos
+app.post('/api/cuadrante', async (req, res) => {
+  const { day, acousticGuitar, electricGuitar, bass, drums, piano, trumpet, acousticGuitar2, electricGuitar2, direccion, director, voz1, voz2, voz3, voz4, song1, song2, song3, song4 } = req.body;
 
-      if (row) {
-        // Si el registro ya existe, actualiza los campos con los nuevos valores
-        db.run(`UPDATE cuadrante SET 
-          acousticGuitar = ?,
-          electricGuitar = ?,
-          bass = ?,
-          drums = ?,
-          trumpet = ?,
-          acousticGuitar2 = ?,
-          piano = ?,
-          director = ?,
-          voz1 = ?,
-          voz2 = ?,
-          voz3 = ?,
-          voz4 = ?,
-          song1 = ?,
-          song2 = ?,
-          song3 = ?
-          WHERE day = ?`,
-          [
-            acousticGuitar,
-            electricGuitar,
-            bass,
-            drums,
-            trumpet,
-            acousticGuitar2,
-            piano,
-            director,
-            voz1,
-            voz2,
-            voz3,
-            voz4,
-            song1,
-            song2,
-            song3,
-            day
-          ],
-          (err) => {
-            if (err) {
-              return res.status(500).json({ error: err.message });
-            }
-            res.status(200).json({ message: `Datos actualizados para el día ${day}` });
-          }
-        );
-      } else {
-        // Si el registro no existe, inserta un nuevo registro en la base de datos
-        const insert = `INSERT INTO cuadrante (
-          day,
+  try {
+    // Verificar si ya existe un registro con la misma clave primaria (day)
+    const existingRecord = await new Promise((resolve, reject) => {
+      conexion.query(`SELECT * FROM cuadrante WHERE day = ?`, [day], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+
+    if (existingRecord.length > 0) {
+      // Si el registro ya existe, actualizar los campos con los nuevos valores
+      conexion.query(`UPDATE cuadrante SET 
+        acousticGuitar = ?,
+        electricGuitar = ?,
+        bass = ?,
+        drums = ?,
+        piano = ?,
+        trumpet = ?,
+        acousticGuitar2 = ?,
+        electricGuitar2 = ?,
+        direccion = ?,
+        director = ?,
+        voz1 = ?,
+        voz2 = ?,
+        voz3 = ?,
+        voz4 = ?,
+        song1 = ?,
+        song2 = ?,
+        song3 = ?,
+        song4 = ?
+        WHERE day = ?`,
+        [
           acousticGuitar,
           electricGuitar,
           bass,
           drums,
+          piano,
           trumpet,
           acousticGuitar2,
-          piano,
+          electricGuitar2,
+          direccion,
           director,
           voz1,
           voz2,
@@ -158,30 +194,74 @@ let db = new sqlite3.Database('./cuadrante.db', (err) => {
           voz4,
           song1,
           song2,
-          song3
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-        db.run(insert, [day, acousticGuitar, electricGuitar, bass, drums, trumpet, acousticGuitar2, piano, director, voz1, voz2, voz3, voz4, song1, song2, song3], function(err) {
-          if (err) {
-            return res.status(500).json({ error: err.message });
+          song3,
+          song4,
+          day
+        ],
+        (error, results) => {
+          if (error) {
+            throw error;
           }
-          res.status(200).json({ message: `Datos insertados para el día ${day}` });
+          res.status(200).json({ message: `Datos actualizados para el día ${day}` });
         });
-      }
-    });
-  });
-  
-  // Ruta para obtener datos de la base de datos
-  app.get('/api/cuadrante/:day', (req, res) => {
-    const day = req.params.day;
-    db.get(`SELECT * FROM cuadrante WHERE day = ?`, [day], (err, row) => {
-      if (err) {
-        return res.status(500).json({ error: err.message });
-      }
-      res.status(200).json(row);
-    });
-  });
+    } else {
+      // Si el registro no existe, insertar un nuevo registro en la base de datos
+      conexion.query(`INSERT INTO cuadrante (
+        day,
+        acousticGuitar,
+        electricGuitar,
+        bass,
+        drums,
+        piano,
+        trumpet,
+        acousticGuitar2,
+        electricGuitar2,
+        direccion,
+        director,
+        voz1,
+        voz2,
+        voz3,
+        voz4,
+        song1,
+        song2,
+        song3,
+        song4
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        day,
+        acousticGuitar,
+        electricGuitar,
+        bass,
+        drums,
+        piano,
+        trumpet,
+        acousticGuitar2,
+        electricGuitar2,
+        direccion,
+        director,
+        voz1,
+        voz2,
+        voz3,
+        voz4,
+        song1,
+        song2,
+        song3,
+        song4
+      ],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+        res.status(200).json({ message: `Datos insertados para el día ${day}` });
+      });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: 'Error al insertar o actualizar datos en la base de datos' });
+  }
+});
 
-// Escuchar el puerto
+
 app.listen(port, () => {
-    console.log(`Servidor ejecutándose en el puerto ${port}`);
+  console.log(`Servidor ejecutándose en el puerto ${port}`);
 });

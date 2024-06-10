@@ -3,6 +3,7 @@
 
 body{
     font-family: "Montserrat", sans-serif;
+    
 }
 
 
@@ -115,35 +116,88 @@ a {
 
 /* Tabla */
 
-main body {
+* main {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ddd;
-  }
+body main{
 
-  .styled-table tr th {
-    background-color: rgba(18, 157, 237, 0.296);
-    color: #333;
-    border-bottom: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+table, th, td {
+  border-collapse: collapse;
+  padding: 1.6rem;
+  text-align: center;;
+  width: 2500px;
+}
+
+
+thead th {
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: hwb(185 55% 1% / 0.616);
+}
+
+tbody td {
+  position: relative;
+  border: 2px solid #bbb6b633;
   
-   .styled-table tr td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
+}
 
-  .styled-table tr:nth-last-of-type(odd) {
-    background-color: hwb(0 94% 10%)
-  }
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+tbody tr:hover {
+  background-color: #fff6;
+}
+
+.table {
+  width: 82vw;
+
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: .8rem;
+
+  overflow: hidden;
+}
+
+#cuadrante {
+  max-height: 89%;
+
+  margin: 0;
+  border-radius: .6rem;
+  
+  overflow:auto;
+}
+
+#cuadrante::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+#cuadrante::-webkit-scrollbar-thumb {
+  background-color: #0004;
+  border-radius: .5rem;
+  visibility: hidden;
+}
+
+#cuadrante:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.day-name {
+  background-color: hsl(197, 76%, 65%);
+  padding: 10px;
+  border-radius: 0.6rem;
+}
 
   .button_container {
     display: block;
@@ -240,37 +294,55 @@ main body {
     .week_paragraph {
       font-size: 1.3rem;
     }
+    
+    table, th, td {
+      width: auto;
+    }
+    .table {
+      width: 100%;
+    }
+
     .styled-table {
         display: grid;
         grid-template-columns: auto 1fr; /* Dividir la tabla en dos columnas, una para el encabezado y otra para el cuerpo */
-        border-bottom-left-radius: 20px;
+
+        padding: 0;
     }
 
     .styled-table thead {
         grid-column: 1; /* Colocar el encabezado en la primera columna */
         position: sticky;
         width: 140px;
+        height: 100%;
     }
 
     .styled-table tbody {
       display: grid;
+      height: 100%;
       grid-auto-flow: column;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
       grid-auto-columns: 240px;
       overflow-x: scroll;
+      background-color: #e4e4e463;
     }
 
     .styled-table td,
     .styled-table th {
         display: block; /* Convertir td y th en elementos de bloque */
         height: 34px;
-        border: none; /* Eliminar los bordes internos entre celdas */
-        padding: 8px; /* Añadir espaciado interno */
-        text-align: center !important;
+        margin: 0;
+        text-align: center;
+        border: 1px solid #ffffff;
+        padding-top: 30px;
     }
 
     .styled-table tr:nth-last-of-type(odd) {
         background: transparent;
+    }
+
+    .day-name-mobile {
+      background-color: rgba(102, 228, 245, 0.216);
+      border-radius: 0.5rem;
     }
 
     .button_container {
@@ -279,29 +351,32 @@ main body {
       width: 100%;
       height: 34px;
       background-color: hwb(202 7% 7% / 0);
-      padding-top: 4px;
+      padding-bottom: 10px;
     }
 
     .button_right {
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      right: 0;
+      width: 44px;
+      height: 44px;
+      position: fixed;
+      bottom: 10px; /* Ajusta la distancia desde la parte inferior según sea necesario */
+      right: 10px; /* Ajusta la distancia desde la derecha según sea necesario */
       border: none;
       border-radius: 4px;
       background-color: rgb(110, 213, 238);
       box-shadow: 0px 2px 4px #1617178c; /* Sombra suave */
     }
     
+    
     .button_left {
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      right: 0;
+      width: 44px;
+      height: 44px;
+      position: fixed;
+      bottom: 10px;
+      left: 10px; 
       border: none;
       border-radius: 4px;
       background-color: rgb(110, 213, 238);
-      box-shadow: 0px 2px 4px #1617178c; /* Sombra suave */
+      box-shadow: 0px 2px 4px #1617178c;
     }
 }
 
