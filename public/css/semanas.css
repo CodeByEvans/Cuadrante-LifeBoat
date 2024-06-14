@@ -26,6 +26,11 @@ a {
     padding: var(--padding-container);
 }
 
+header {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
 /* Hero */
 
 .hero{

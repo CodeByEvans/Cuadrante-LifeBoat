@@ -98,10 +98,11 @@ app.get("/cuadrante/quinta_semana", (req, res) => {
 
 // Ruta para insertar o actualizar datos en la base de datos
 app.post('/api/cuadrante', async (req, res) => {
-  const { day, acousticGuitar, electricGuitar, bass, drums, piano, trumpet, acousticGuitar2, electricGuitar2, direccion, director, voz1, voz2, voz3, voz4, song1, song2, song3, song4 } = req.body;
-
   try {
-    // Verificar si ya existe un registro con la misma clave primaria (day)
+    const { day, ...data } = req.body;
+    if (!day) {
+      return res.status(400).json({ error: 'Falta el campo "day"' });
+    }
     const existingRecord = await new Promise((resolve, reject) => {
       conexion.query(`SELECT * FROM cuadrante WHERE day = ?`, [day], (err, result) => {
         if (err) {
@@ -111,109 +112,23 @@ app.post('/api/cuadrante', async (req, res) => {
         }
       });
     });
-
     if (existingRecord.length > 0) {
-      // Si el registro ya existe, actualizar los campos con los nuevos valores
-      conexion.query(`UPDATE cuadrante SET 
-        acousticGuitar = ?,
-        electricGuitar = ?,
-        bass = ?,
-        drums = ?,
-        piano = ?,
-        trumpet = ?,
-        acousticGuitar2 = ?,
-        electricGuitar2 = ?,
-        direccion = ?,
-        director = ?,
-        voz1 = ?,
-        voz2 = ?,
-        voz3 = ?,
-        voz4 = ?,
-        song1 = ?,
-        song2 = ?,
-        song3 = ?,
-        song4 = ?
-        WHERE day = ?`,
-        [
-          acousticGuitar,
-          electricGuitar,
-          bass,
-          drums,
-          piano,
-          trumpet,
-          acousticGuitar2,
-          electricGuitar2,
-          direccion,
-          director,
-          voz1,
-          voz2,
-          voz3,
-          voz4,
-          song1,
-          song2,
-          song3,
-          song4,
-          day
-        ],
-        (error, results) => {
-          if (error) {
-            throw error;
-          }
-          res.status(200).json({ message: `Datos actualizados para el día ${day}` });
-        });
-    } else {
-      // Si el registro no existe, insertar un nuevo registro en la base de datos
-      conexion.query(`INSERT INTO cuadrante (
-        day,
-        acousticGuitar,
-        electricGuitar,
-        bass,
-        drums,
-        piano,
-        trumpet,
-        acousticGuitar2,
-        electricGuitar2,
-        direccion,
-        director,
-        voz1,
-        voz2,
-        voz3,
-        voz4,
-        song1,
-        song2,
-        song3,
-        song4
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        day,
-        acousticGuitar,
-        electricGuitar,
-        bass,
-        drums,
-        piano,
-        trumpet,
-        acousticGuitar2,
-        electricGuitar2,
-        direccion,
-        director,
-        voz1,
-        voz2,
-        voz3,
-        voz4,
-        song1,
-        song2,
-        song3,
-        song4
-      ],
-      (error, results) => {
+      conexion.query(`UPDATE cuadrante SET ? WHERE day = ?`, [data, day], (error, results) => {
         if (error) {
-          throw error;
+          return res.status(500).json({ error: 'Error al actualizar datos en la base de datos' });
+        }
+        res.status(200).json({ message: `Datos actualizados para el día ${day}` });
+      });
+    } else {
+      conexion.query(`INSERT INTO cuadrante SET ?`, { day, ...data }, (error, results) => {
+        if (error) {
+          return res.status(500).json({ error: 'Error al insertar datos en la base de datos' });
         }
         res.status(200).json({ message: `Datos insertados para el día ${day}` });
       });
     }
   } catch (err) {
-    console.error(err.message);
+    console.error('Error al insertar o actualizar datos en la base de datos:', err.message);
     res.status(500).json({ error: 'Error al insertar o actualizar datos en la base de datos' });
   }
 });

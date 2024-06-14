@@ -17,19 +17,16 @@
             fetch(`/api/cuadrante/${selectedDate}`)
               .then((response) => {
                 if (!response.ok) {
-                  throw new Error("Error al obtener datos del servidor");
-                }
-                return response.text(); // Obtener el texto de la respuesta
-              })
-              .then((text) => {
-                if (text.trim() === "") { // Verificar si el texto está vacío
-                  // Establecer todos los campos del formulario en blanco
                   document.querySelectorAll(".input-box input").forEach((input) => {
                     if (input.id !== "day") {  
                     input.value = "";
                     }
                     });
-                } else {
+                  throw new Error("No hay datos del dia");
+                }
+                return response.text(); // Obtener el texto de la respuesta
+              })
+              .then((text) => {{
                   // Si hay datos en la respuesta, analizarla como JSON y actualizar los campos del formulario
                   const data = JSON.parse(text);
                   // Actualizar los campos del formulario con los datos obtenidos
@@ -211,42 +208,42 @@
             </div>
 
             <div class="input-box">
-              <label for="voz_1" class="voz1">Voz 1</label>
+              <label for="voz1" class="voz1">Voz 1</label>
               <input type="text" id="voz1" name="voz1" />
             </div>
 
             <div class="input-box">
-              <label for="voz_2" class="voz2">Voz 2</label>
+              <label for="voz2" class="voz2">Voz 2</label>
               <input type="text" id="voz2" name="voz2" />
             </div>
 
             <div class="input-box">
-              <label for="voz_3" class="voz3">Voz 3</label>
+              <label for="voz3" class="voz3">Voz 3</label>
               <input type="text" id="voz3" name="voz3" />
             </div>
 
             <div class="input-box">
-              <label for="voz_4" class="voz4">Voz 4</label>
+              <label for="voz4" class="voz4">Voz 4</label>
               <input type="text" id="voz4" name="voz4" />
             </div>
 
             <div class="input-box">
-              <label for="song_1" class="song1">Canción 1</label>
+              <label for="song1" class="song1">Canción 1</label>
               <input type="text" id="song1" name="song1" />
             </div>
 
             <div class="input-box">
-              <label for="song_2" class="song2">Canción 2</label>
+              <label for="song2" class="song2">Canción 2</label>
               <input type="text" id="song2" name="song2" />
             </div>
 
             <div class="input-box">
-              <label for="song_3" class="song3">Canción 3</label>
+              <label for="song3" class="song3">Canción 3</label>
               <input type="text" id="song3" name="song3" />
             </div>
 
             <div class="input-box">
-              <label for="song_4" class="song3">Canción 4</label>
+              <label for="song4" class="song3">Canción 4</label>
               <input type="text" id="song4" name="song4" />
             </div>
           </section>

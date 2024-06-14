@@ -1,13 +1,7 @@
+const selectedDates = fourthWeek;
+const days = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+
 function getDayName(dateString) {
-    const days = [
-      "Domingo",
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado",
-    ];
     const date = new Date(dateString);
     const day = date.getDate();
     return `${days[date.getDay()]} ${day}`;
@@ -87,7 +81,7 @@ function getDayName(dateString) {
       });
     }
   
-    fourthWeek.forEach((date) => {
+    selectedDates.forEach((date) => {
         fetch(`/api/cuadrante/${date}`)
           .then((response) => {
             if (!response.ok) {
@@ -119,21 +113,7 @@ function getDayName(dateString) {
     style.textContent = css;
   }
   
-  function getDayName(dateString) {
-    const days = [
-      "Domingo",
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado",
-    ];
-    const date = new Date(dateString);
-    const day = date.getDate();
-    return `${days[date.getDay()]} ${day}`;
-  }
-
+  
   document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth <= 800) {
       let totalDias = -1;
@@ -156,27 +136,27 @@ function getDayName(dateString) {
         fetchedData.forEach((data) => {
           const dayName = getDayName(data.day);
           tableBody.innerHTML += `
-            <tr>
-              <td class="day-name-mobile">${dayName}</td>
-              <td>${data.acousticGuitar || ""}</td>
-              <td>${data.electricGuitar || ""}</td>
-              <td>${data.bass || ""}</td>
-              <td>${data.drums || ""}</td>
-              <td>${data.piano || ""}</td>
-              <td class="trumpet_body">${data.trumpet || ""}</td>
-              <td class="acousticGuitar2_body">${data.acousticGuitar2 || ""}</td>
-              <td class="electricGuitar2_body">${data.electricGuitar2 || ""}</td>
-              <td>${data.direccion || ""}</td>
-              <td>${data.director || ""}</td>
-              <td>${data.voz1 || ""}</td>
-              <td>${data.voz2 || ""}</td>
-              <td>${data.voz3 || ""}</td>
-              <td class="voz4_body">${data.voz4 || ""}</td>
-              <td>${data.song1 || ""}</td>
-              <td>${data.song2 || ""}</td>
-              <td>${data.song3 || ""}</td>
-              <td class="song4_body">${data.song4 || ""}</td>
-            </tr>`;
+              <tr>
+                <td class="day-name-mobile">${dayName}</td>
+                <td>${data.acousticGuitar || ""}</td>
+                <td>${data.electricGuitar || ""}</td>
+                <td>${data.bass || ""}</td>
+                <td>${data.drums || ""}</td>
+                <td>${data.piano || ""}</td>
+                <td class="trumpet_body">${data.trumpet || ""}</td>
+                <td class="acousticGuitar2_body">${data.acousticGuitar2 || ""}</td>
+                <td class="electricGuitar2_body">${data.electricGuitar2 || ""}</td>
+                <td>${data.direccion || ""}</td>
+                <td>${data.director || ""}</td>
+                <td>${data.voz1 || ""}</td>
+                <td>${data.voz2 || ""}</td>
+                <td>${data.voz3 || ""}</td>
+                <td class="voz4_body">${data.voz4 || ""}</td>
+                <td>${data.song1 || ""}</td>
+                <td>${data.song2 || ""}</td>
+                <td>${data.song3 || ""}</td>
+                <td class="song4_body">${data.song4 || ""}</td>
+              </tr>`;
           totalDias++;
         });
   
@@ -184,8 +164,7 @@ function getDayName(dateString) {
         actualizarColumnas(totalDias);
       }
   
-      // Realiza las solicitudes fetch y almacena los datos en fetchedData
-      fourthWeek.forEach((date) => {
+      selectedDates.forEach((date) => {
         fetch(`/api/cuadrante/${date}`)
           .then((response) => {
             if (!response.ok) {
@@ -207,212 +186,71 @@ function getDayName(dateString) {
     }
   });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Realizar la solicitud al servidor para obtener datos asociados a las fechas seleccionadas
-    const selectedDates = fourthWeek;
-    const promises = selectedDates.map(selectedDate => {
-        return fetch(`/api/cuadrante/${selectedDate}`)
-            .then(response => response.json())
-            .catch(error => {
-                console.error('Error fetching data for date', selectedDate, ':', error);
-                return {}; // Devuelve un objeto vacío en caso de error para que no afecte el proceso
-            });
-    });
-
-    Promise.all(promises)
-        .then(dataArray => {
-            const allVoz4Empty = dataArray.every(data => !data.trumpet || data.trumpet.trim() === "");
-
-            const voz4Header = document.querySelector('.trumpet_header');
-            const voz4Bodies = document.querySelectorAll('.trumpet_body');
-
-            if (allVoz4Empty) {
-                voz4Header.style.display = 'none';
-                voz4Bodies.forEach(body => {
-                    body.style.display = 'none'; 
-                });
-            } else if (innerWidth <= 800) {
-                voz4Header.style.display = 'block'; 
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; 
-                });
-            } else {
-                voz4Header.style.display = 'table-cell'; 
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; 
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Realizar la solicitud al servidor para obtener datos asociados a las fechas seleccionadas
-    const selectedDates = fourthWeek;
-    const promises = selectedDates.map(selectedDate => {
-        return fetch(`/api/cuadrante/${selectedDate}`)
-            .then(response => response.json())
-            .catch(error => {
-                console.error('Error fetching data for date', selectedDate, ':', error);
-                return {}; // Devuelve un objeto vacío en caso de error para que no afecte el proceso
-            });
-    });
-
-    Promise.all(promises)
-        .then(dataArray => {
-            const allVoz4Empty = dataArray.every(data => !data.acousticGuitar2 || data.acousticGuitar2.trim() === "");
-
-            const voz4Header = document.querySelector('.acousticGuitar2_header');
-            const voz4Bodies = document.querySelectorAll('.acousticGuitar2_body');
-
-            if (allVoz4Empty) {
-                voz4Header.style.display = 'none';
-                voz4Bodies.forEach(body => {
-                    body.style.display = 'none'; 
-                });
-            } else if (innerWidth <= 800) {
-                voz4Header.style.display = 'block'; 
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; 
-                });
-            } else {
-                voz4Header.style.display = 'table-cell'; 
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; 
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Realizar la solicitud al servidor para obtener datos asociados a las fechas seleccionadas
-    const selectedDates = fourthWeek;
-    const promises = selectedDates.map(selectedDate => {
-        return fetch(`/api/cuadrante/${selectedDate}`)
-            .then(response => response.json())
-            .catch(error => {
-                console.error('Error fetching data for date', selectedDate, ':', error);
-                return {}; // Devuelve un objeto vacío en caso de error para que no afecte el proceso
-            });
-    });
-
-    Promise.all(promises)
-        .then(dataArray => {
-            const allVoz4Empty = dataArray.every(data => !data.electricGuitar2 || data.electricGuitar2.trim() === "");
-
-            const voz4Header = document.querySelector('.electricGuitar2_header');
-            const voz4Bodies = document.querySelectorAll('.electricGuitar2_body');
-
-            if (allVoz4Empty) {
-                voz4Header.style.display = 'none';
-                voz4Bodies.forEach(body => {
-                    body.style.display = 'none'; 
-                });
-            } else if (innerWidth <= 800) {
-                voz4Header.style.display = 'block'; 
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; 
-                });
-            } else {
-                voz4Header.style.display = 'table-cell'; 
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; 
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Realizar la solicitud al servidor para obtener datos asociados a las fechas seleccionadas
-    const selectedDates = fourthWeek;
-    const promises = selectedDates.map(selectedDate => {
-        return fetch(`/api/cuadrante/${selectedDate}`)
-            .then(response => response.json())
-            .catch(error => {
-                console.error('Error fetching data for date', selectedDate, ':', error);
-                return {}; // Devuelve un objeto vacío en caso de error para que no afecte el proceso
-            });
-    });
-
-    Promise.all(promises)
-        .then(dataArray => {
-            // Verificar si todos los apartados voz4 están vacíos para todas las fechas seleccionadas
-            const allVoz4Empty = dataArray.every(data => !data.voz4 || data.voz4.trim() === "");
-
-            // Seleccionar el encabezado con la clase voz4_header
-            const voz4Header = document.querySelector('.voz4_header');
-            // Selecciona todos los elementos con la clase voz4_body
-            const voz4Bodies = document.querySelectorAll('.voz4_body');
-
-            // Si todos los apartados voz4 están vacíos, ocultar el encabezado y los elementos voz4_body
-            if (allVoz4Empty) {
-                voz4Header.style.display = 'none'; // Ocultar el encabezado
-                voz4Bodies.forEach(body => {
-                    body.style.display = 'none'; // Ocultar los elementos voz4_body
-                });
-            } else if (innerWidth <= 800) {
-                voz4Header.style.display = 'block'; // Mostrar el encabezado
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; // Volver al estilo predeterminado de los elementos voz4_body
-                });
-            } else {
-                voz4Header.style.display = 'table-cell'; // Mostrar el encabezado
-                voz4Bodies.forEach(body => {
-                    body.style.display = ''; // Volver al estilo predeterminado de los elementos voz4_body
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Realizar la solicitud al servidor para obtener datos asociados a las fechas seleccionadas
-    const selectedDates = fourthWeek;
-    const promises = selectedDates.map(selectedDate => {
-        return fetch(`/api/cuadrante/${selectedDate}`)
-            .then(response => response.json())
-            .catch(error => {
-                console.error('Error fetching data for date', selectedDate, ':', error);
-                return {}; // Devuelve un objeto vacío en caso de error para que no afecte el proceso
-            });
-    });
-
-    Promise.all(promises)
-        .then(dataArray => {
-            const allSong4Empty = dataArray.every(data => !data.song4 || data.song4.trim() === "");
-            const song4Header = document.querySelector('.song4_header');
-            const song4Bodies = document.querySelectorAll('.song4_body');
-
-            if (allSong4Empty) {
-                song4Header.style.display = 'none'; // Ocultar el encabezado
-                song4Bodies.forEach(body => {
-                    body.style.display = 'none'; // Ocultar los elementos song4_body
-                });
-            } else if (innerWidth <= 800) {
-                song4Header.style.display = 'block'; // Mostrar el encabezado
-                song4Bodies.forEach(body => {
-                    body.style.display = ''; // Volver al estilo predeterminado de los elementos song4_body
-                });
-            } else {
-                song4Header.style.display = 'table-cell'; // Mostrar el encabezado
-                song4Bodies.forEach(body => {
-                    body.style.display = ''; // Volver al estilo predeterminado de los elementos song4_body
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
-
+  // Función para obtener los datos asociados a las fechas seleccionadas
+function fetchDataForDates(selectedDates) {
+  return Promise.all(selectedDates.map(selectedDate => {
+      return fetch(`/api/cuadrante/${selectedDate}`)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error("No hay datos para esta fecha");
+              }
+              return response.json();
+          })
+          .catch(error => {
+              console.error('Error fetching data for date', selectedDate, ':', error);
+              return {}; // Devuelve un objeto vacío en caso de error para que no afecte el proceso
+          });
+  }));
+}
   
+document.addEventListener('DOMContentLoaded', () => {
+  // Realizar la solicitud al servidor para obtener datos asociados a las fechas seleccionadas
+  fetchDataForDates(selectedDates)
+      .then(dataArray => {
+          // Función para verificar si todos los elementos de un tipo están vacíos
+          const checkAllEmpty = (className, dataKey) => {
+              return dataArray.every(data => !data[dataKey] || data[dataKey].trim() === "");
+          };
+
+          // Función para mostrar u ocultar los elementos basado en la ventana interna y la vacuidad de los datos
+          const toggleElements = (className, dataKey) => {
+              const header = document.querySelector(`.${className}_header`);
+              const bodies = document.querySelectorAll(`.${className}_body`);
+
+              if (checkAllEmpty(className, dataKey)) {
+                  header.style.display = 'none';
+                  bodies.forEach(body => {
+                      body.style.display = 'none';
+                  });
+              } else if (innerWidth <= 800) {
+                  header.style.display = 'block';
+                  bodies.forEach(body => {
+                      body.style.display = '';
+                  });
+              } else {
+                  header.style.display = 'table-cell';
+                  bodies.forEach(body => {
+                      body.style.display = '';
+                  });
+              }
+          };
+
+          // Llamar a la función para mostrar/u ocultar los elementos .trumpet
+          toggleElements('trumpet', 'trumpet');
+
+          // Llamar a la función para mostrar/u ocultar los elementos .acousticGuitar2
+          toggleElements('acousticGuitar2', 'acousticGuitar2');
+
+          // Llamar a la función para mostrar/u ocultar los elementos .electricGuitar2
+          toggleElements('electricGuitar2', 'electricGuitar2');
+
+          // Llamar a la función para mostrar/u ocultar los elementos .voz4
+          toggleElements('voz4', 'voz4');
+
+          // Llamar a la función para mostrar/u ocultar los elementos .song4
+          toggleElements('song4', 'song4');
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+});
