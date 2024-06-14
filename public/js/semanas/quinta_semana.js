@@ -51,7 +51,7 @@ const selectedDates = fifthWeek;
         const dayName = `${data.nombre_dia} ${data.dia}`;
         tableBody.innerHTML += `
   <tr>
-    <td> <p class="day-name">${dayName}</p></td>
+    <td class="day-name">${dayName}</td>
     <td>${data.acousticGuitar || ""}</td>
     <td>${data.electricGuitar || ""}</td>
     <td>${data.bass || ""}</td>

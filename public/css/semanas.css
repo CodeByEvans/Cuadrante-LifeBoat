@@ -200,7 +200,6 @@ tbody tr:hover {
 .day-name {
   background-color: rgba(102, 228, 245, 0.448);
   padding: 10px;
-  border-radius: 0.6rem;
   font-weight: 545;
 }
 
