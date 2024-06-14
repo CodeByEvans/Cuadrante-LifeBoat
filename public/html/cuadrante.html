@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cuadrante</title>
 
-    <link rel="preload" href="imagenes/cuadrante.webp" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </noscript>
+
     <link
       rel="shortcut icon"
       href="imagenes/lifeboat.png"
@@ -13,12 +19,16 @@
     />
     <link rel="stylesheet" href="css/cuadrante.css" />
 
-    <link rel="preload" href="imagenes/guitar.webp" as="image">
-    <link rel="preload" href="imagenes/bass.webp" as="image">
-    <link rel="preload" href="imagenes/drums.webp" as="image">
-    <link rel="preload" href="imagenes/piano.webp" as="image">
-    <link rel="preload" href="imagenes/microphone.webp" as="image">
+    <link rel="preload" fetchpriority="high" href="imagenes/cuadrante.webp" as="image">
+    <link rel="preload" fetchpriority="low" href="imagenes/guitar.webp" as="image">
+    <link rel="preload" fetchpriority="low" href="imagenes/bass.webp" as="image">
+    <link rel="preload" fetchpriority="low" href="imagenes/drums.webp" as="image">
+    <link rel="preload" fetchpriority="low" href="imagenes/piano.webp" as="image">
+    <link rel="preload" fetchpriority="low" href="imagenes/microphone.webp" as="image">
+
   </head>
+
+  
   <body>
     <header class="hero">
       <nav class="nav container">
@@ -61,35 +71,35 @@
         <div class="week_main">
           <a href="/cuadrante/primera_semana">
             <article class="week_icons">
-              <img class="week_icon" src="imagenes/guitar.webp" alt="" />
+              <img fetchpriority="low" class="week_icon" src="imagenes/guitar.webp" alt="" />
               <h3 class="week_title">Primera Semana</h3>
               <p class="week_paragraph">1 al 2</p>
             </article>
           </a>
           <a href="/cuadrante/segunda_semana">
             <article class="week_icons">
-              <img class="week_icon" src="imagenes/bass.webp" alt="" />
+              <img fetchpriority="low" class="week_icon" src="imagenes/bass.webp" alt="" />
               <h3 class="week_title">Segunda Semana</h3>
               <p class="week_paragraph">3 al 9</p>
             </article>
           </a>
           <a href="/cuadrante/tercera_semana">
             <article class="week_icons">
-              <img class="week_icon" src="imagenes/drums.webp" alt="" />
+              <img fetchpriority="low" class="week_icon" src="imagenes/drums.webp" alt="" />
               <h3 class="week_title">Tercera Semana</h3>
               <p class="week_paragraph">10 al 16</p>
             </article>
           </a>
           <a href="/cuadrante/cuarta_semana">
             <article class="week_icons">
-              <img class="week_icon" src="imagenes/piano.webp" alt="" />
+              <img fetchpriority="low" class="week_icon" src="imagenes/piano.webp" alt="" />
               <h3 class="week_title">Cuarta Semana</h3>
               <p class="week_paragraph">17 al 23</p>
             </article>
           </a>
           <a href="/cuadrante/quinta_semana">
             <article class="week_icons">
-              <img class="week_icon" src="imagenes/Microphone.webp" alt="" />
+              <img fetchpriority="low" class="week_icon" src="imagenes/Microphone.webp" alt="" />
               <h3 class="week_title">Quinta Semana</h3>
               <p class="week_paragraph">24 al 30</p>
             </article>

@@ -1,11 +1,4 @@
 const selectedDates = thirdWeek;
-const days = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-
-function getDayName(dateString) {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    return `${days[date.getDay()]} ${day}`;
-  }
   
   document.addEventListener("DOMContentLoaded", () => {
     // Crear el encabezado de la tabla
@@ -55,7 +48,7 @@ function getDayName(dateString) {
   
       // Itera sobre los datos ordenados y agrega las filas a la tabla
       fetchedData.forEach((data) => {
-        const dayName = getDayName(data.day);
+        const dayName = `${data.nombre_dia} ${data.dia}`;
         tableBody.innerHTML += `
   <tr>
     <td> <p class="day-name">${dayName}</p></td>
@@ -134,10 +127,10 @@ function getDayName(dateString) {
   
         // Itera sobre los datos ordenados y agrega las filas a la tabla
         fetchedData.forEach((data) => {
-          const dayName = getDayName(data.day);
+          const dayName = `${data.nombre_dia} ${data.dia}`;
           tableBody.innerHTML += `
               <tr>
-                <td class="day-name-mobile">${dayName}</td>
+                <td class="day-name">${dayName}</td>
                 <td>${data.acousticGuitar || ""}</td>
                 <td>${data.electricGuitar || ""}</td>
                 <td>${data.bass || ""}</td>

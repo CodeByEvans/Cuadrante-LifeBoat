@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body{
@@ -199,9 +198,10 @@ tbody tr:hover {
 }
 
 .day-name {
-  background-color: hsl(197, 76%, 65%);
+  background-color: rgba(102, 228, 245, 0.448);
   padding: 10px;
   border-radius: 0.6rem;
+  font-weight: 545;
 }
 
   .button_container {
@@ -345,9 +345,11 @@ tbody tr:hover {
         background: transparent;
     }
 
-    .day-name-mobile {
+    .day-name {
       background-color: rgba(102, 228, 245, 0.216);
-      border-radius: 0.5rem;
+      padding: 26px;
+      border-radius: 0;
+      font-weight: 500;
     }
 
     .button_container {

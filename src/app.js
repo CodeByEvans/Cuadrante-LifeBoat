@@ -75,7 +75,29 @@ app.get("/cuadrante/quinta_semana", (req, res) => {
   const { date } = req.params;
 
   // Consulta SQL para obtener los datos para la fecha especificada
-  const sql = `SELECT * FROM cuadrante WHERE day = ?`;
+  const sql = `SELECT 
+                 DAYNAME(day) AS nombre_dia, 
+                 DAY(day) AS dia, 
+                 acousticGuitar, 
+                 electricGuitar, 
+                 bass, 
+                 drums, 
+                 piano, 
+                 trumpet, 
+                 acousticGuitar2, 
+                 electricGuitar2, 
+                 direccion, 
+                 director, 
+                 voz1, 
+                 voz2, 
+                 voz3, 
+                 voz4, 
+                 song1, 
+                 song2, 
+                 song3, 
+                 song4 
+               FROM cuadrante 
+               WHERE day = ?`;
 
   // Ejecutar la consulta con la fecha como parámetro
   conexion.query(sql, [date], (error, results) => {
@@ -90,6 +112,13 @@ app.get("/cuadrante/quinta_semana", (req, res) => {
       res.status(404).json({ error: 'No se encontraron datos para la fecha especificada' });
       return;
     }
+
+    const result = results[0];
+    const dateObj = new Date(date);
+    const options = { weekday: 'long' };
+    let nombreDia = dateObj.toLocaleDateString('es-ES', options);
+    nombreDia = nombreDia.charAt(0).toUpperCase() + nombreDia.slice(1);
+    result.nombre_dia = nombreDia;
 
     // Devolver los resultados como JSON
     res.json(results[0]);
