@@ -153,16 +153,10 @@ thead th {
 tbody td {
   position: relative;
   border: 2px solid #bbb6b633;
-  
+  min-width: 140px;
+  height: 44px;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #0000000b;
-}
-
-tbody tr:hover {
-  background-color: #fff6;
-}
 
 .table {
   width: 82vw;
