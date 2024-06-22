@@ -1,4 +1,4 @@
-const selectedDates = thirdWeek;
+const selectedDates = Junio;
 
 document.addEventListener("DOMContentLoaded", async () => {
   await createTableHeader();
@@ -13,16 +13,16 @@ async function createTableHeader() {
       <thead>
         <tr>
           <th>Día</th>
-          <th>Guitarra Acústica</th>
-          <th>Guitarra Eléctrica</th>
+          <th>G.Acústica</th>
+          <th>G.Eléctrica</th>
           <th>Bajo</th>
           <th>Batería</th>
           <th>Piano</th>
           <th class="trumpet_header">Trompeta</th>
-          <th class="acousticGuitar2_header">Guitarra Acústica 2</th>
-          <th class="electricGuitar2_header">Guitarra Eléctrica 2</th>
+          <th class="acousticGuitar2_header">G.Acústica 2</th>
+          <th class="electricGuitar2_header">G.Eléctrica 2</th>
           <th>Dirección</th>
-          <th>Director musical</th>
+          <th>Director Musical</th>
           <th>Voz 1</th>
           <th>Voz 2</th>
           <th>Voz 3</th>
@@ -59,10 +59,19 @@ async function fetchDataAndAddRows() {
   const tableBody = document.getElementById("tableBody");
   tableBody.innerHTML = "";
   fetchedData.forEach((data) => {
-    const dayName = `${data.nombre_dia} ${data.dia}`;
+    const dayName = `${data.nombre_dia} ${data.dia}` 
+    let classDay = "";
+
+    if (dayName.includes("Jueves")) {
+      classDay = "jueves";
+    } else if (dayName.includes("Sábado")) {
+      classDay = "sabado";
+    } else if (dayName.includes("Domingo")) {
+      classDay = "domingo";
+    }
     tableBody.innerHTML += `
       <tr>
-        <td class="day-name">${dayName}</td>
+        <td> <span class="${classDay}">${dayName}</td>
         <td>${data.acousticGuitar || ""}</td>
         <td>${data.electricGuitar || ""}</td>
         <td>${data.bass || ""}</td>

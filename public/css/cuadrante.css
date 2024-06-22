@@ -152,9 +152,6 @@ a {
 
 }
 
-.week_paragraph {
-    line-height: 1.7;
-}
 
 .week_main {
     padding-top: 20px;
@@ -182,7 +179,6 @@ a {
     border-radius: 50%;
     display: block;
     object-fit: cover;
-    margin-bottom: -10px;
 }
 
 .week_icons:hover .week_icon {
@@ -192,13 +188,14 @@ a {
 .week_title {
     top: 0;
     font-size: 1.4rem;
-    margin-bottom: -30px;
     text-align: center;
+    padding: 4px 0 0 0;
 }
 
 .week_paragraph {
     font-size: 1.2rem;
     text-align: center;
+    padding: 0;
 }
 
 @media (max-width: 800px) {
