@@ -42,9 +42,13 @@ app.get("/gestion", (req, res) => {
 
 // ------------------------------------------------
 
-// Ruta para Junio.html
-app.get("/cuadrante/junio", (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/html/Semanas/Junio.html'));
+// Ruta para los meses.
+app.get("/cuadrante/julio", (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/Semanas/Julio.html'));
+});
+
+app.get("/cuadrante/agosto", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/html/Semanas/Agosto.html'));
 });
 
 // ------------------------------------------------

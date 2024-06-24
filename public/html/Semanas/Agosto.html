@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agosto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </noscript>
+
+    <style>
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/drums.webp");
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        z-index: -1;
+      }
+    </style>
+
+    <style id="dynamic-styles"></style>
+
+    <link
+      rel="shortcut icon"
+      href="../imagenes/lifeboat.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/meses.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <div class="nav_title">
+          <a href="/">
+            <img class="nav_logo" src="../imagenes/lifeboat.png" alt="" />
+          </a>
+        </div>
+
+        <ul class="nav_link nav_link-menu">
+          <il class="nav_items">
+            <a href="/" class="nav_links">Inicio</a>
+          </il>
+          <il class="nav_items">
+            <a href="/cuadrante" class="nav_links">Cuadrante</a>
+          </il>
+          <il class="nav_items">
+            <a href="#" class="nav_links">Repertorio</a>
+          </il>
+          <il class="nav_items">
+            <a href="/validacion" class="nav_links">Gestión</a>
+          </il>
+          <img src="../imagenes/close.svg" class="nav_close" alt="img_close" />
+        </ul>
+        <div class="nav_menu">
+          <img src="../imagenes/menu_icon.svg" class="nav_img" alt="img_menu" />
+        </div>
+      </nav>
+
+      <section class="hero_container container">
+        <h1 class="hero_title">Agosto</h1>
+        <p class="hero_paragraph">Listado de Agosto</p>
+      </section>
+    </header>
+
+    <main>
+      <section class="table">
+        <div id="cuadrante"></div>
+        <section class="button_container">
+          <div class="button_left">
+            <a href="/cuadrante/julio" class="button_action">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+              </svg>
+              
+            </a>
+          </div>
+        </section>
+      </section>
+
+    </main>
+
+    <script>
+      let previousWidth = window.innerWidth;
+
+      function handleResize() {
+        let currentWidth = window.innerWidth;
+        if ((previousWidth < 800 && currentWidth >= 800) || (previousWidth >= 800 && currentWidth < 800)) {
+          location.reload();
+        }
+
+        previousWidth = currentWidth;
+      }
+
+      window.addEventListener('resize', handleResize);
+    </script>
+
+    <script src="../../js/semanas/daysToFetch.js"></script>
+    <script src="../../js/semanas/mes2.js"></script>
+    <script async src="../../js/menu.js"></script>
+  </body>
+</html>

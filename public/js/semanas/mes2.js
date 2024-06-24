@@ -1,4 +1,4 @@
-const selectedDates = Julio;
+const selectedDates = Agosto;
 
 document.addEventListener("DOMContentLoaded", async () => {
   await createTableHeader();

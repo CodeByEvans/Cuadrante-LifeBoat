@@ -156,7 +156,7 @@ a {
 .week_main {
     padding-top: 20px;
     display: grid;
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     gap: 1em;
     overflow: hidden;
