@@ -361,18 +361,28 @@ tr:nth-child(even){
       display: grid;
       height: 100%;
       grid-auto-flow: column;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
-      grid-auto-columns: 280px;
-      overflow-x: scroll;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
+      grid-auto-columns: 260px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory; /* Activa el scroll-snap en el eje X */
+      scroll-snap-stop: always;
+      scroll-behavior: smooth;
       background-color: #e4e4e463;
+    }
+
+    .styled-table tbody tr {
+      scroll-snap-align: start; /* Cada fila se alinea al inicio del contenedor en el scroll */
     }
 
     .styled-table td,
     .styled-table th {
         display: block; /* Convertir td y th en elementos de bloque */
         height: 10px;
+        display: flex;
         margin: 0;
         text-align: center;
+        justify-content: center;
+        align-items: center;
         padding-top: 30px;
     }
 
