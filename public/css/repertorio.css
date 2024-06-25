@@ -148,18 +148,21 @@ thead th {
   position: relative;
   top: 0;
   left: 0;
-  background-color: #A0E9FF;
-  white-space: nowrap;
+  background-color: #F9D689;
+  font-size: 16px;
 }
 
 tbody td {
   position: relative;
-  width: 136px;
-  height: 44px;
+  width: 400px;
+  height: 10px;
 }
 
-tbody td:first-child {
-  white-space: nowrap;
+@media ( min-width: 768px) {
+  tbody td:first-child {
+    white-space: nowrap;
+    width: 1000px;
+  }
 }
 
 tr:nth-child(even){
@@ -168,7 +171,7 @@ tr:nth-child(even){
 
 @media (min-width: 768px) {
   tr:hover td {
-    background-color: #CDF5FD;
+    background-color: #F5E7B2;
     color: black;
   }
 }
@@ -183,71 +186,14 @@ tr:nth-child(even){
   overflow: hidden;
 }
 
-.day-name {
-  border-radius: 4px;
-  padding: 10px;
-  font-weight: 545;
-  z-index: 1;
-  position: sticky;
-  left: 0;
-    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-.jueves {
-  background-color: #DBE2EF;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 550;
-  color: rgb(99, 98, 98);
-}
-
-.sabado {
-  background-color: #3F72AF;
-  padding: 12px;
-  border-radius: 10px;
-  color: white;
-}
-
-.domingo {
-  background-color: #112D4E;
-  padding: 12px;
-  border-radius: 10px;
-  color: white;
-}
 
 #cuadrante {
   max-height: 89%;
-
   margin: 0;
   border-radius: .6rem;
   
   overflow:auto;
 }
-
-  .button_container {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 34px;
-    background-color: #E3FDFD
-  }
-
-  .button_right {
-    width: 34px;
-    height: 34px;
-    position: absolute;
-    right: 0;
-  }
-
-  .button_left {
-    width: 34px;
-    height: 34px;
-    position: absolute;
-    left: 0;
-  }
-
-
-
 
   @media (max-width: 800px) {
     .nav_logo {
@@ -323,70 +269,17 @@ tr:nth-child(even){
     
     table, th, td {
       width: auto;
+      font-size: 12px;
+    }
+    
+    thead th {
+      font-size: 14px;
     }
     
     .table {
       width: 100%;
     }
 
-    .styled-table {
-        display: grid;
-        grid-template-columns: auto 1fr; /* Dividir la tabla en dos columnas, una para el encabezado y otra para el cuerpo */
-
-        padding: 0;
-    }
-
-    .styled-table thead {
-        grid-column: 1; /* Colocar el encabezado en la primera columna */
-        position: sticky;
-        width: 120px;
-        height: 100%;
-    }
-
-    .styled-table tbody {
-      display: grid;
-      height: 100%;
-      grid-auto-flow: column;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
-      grid-auto-columns: 260px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory; /* Activa el scroll-snap en el eje X */
-      scroll-snap-stop: always;
-      scroll-behavior: smooth;
-      background-color: #e4e4e463;
-    }
-
-    .styled-table tbody tr {
-      scroll-snap-align: start; /* Cada fila se alinea al inicio del contenedor en el scroll */
-    }
-
-    .styled-table td,
-    .styled-table th {
-        display: block; /* Convertir td y th en elementos de bloque */
-        height: 10px;
-        display: flex;
-        margin: 0;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        padding-top: 30px;
-    }
-
-    .styled-table td {
-      width: auto;
-    }
-
-    .styled-table tr:nth-last-of-type(odd) {
-        background: transparent;
-    }
-
-    .day-name {
-      background-color: rgba(102, 228, 245, 0.216);
-      padding: 26px;
-      border-radius: 0;
-      font-weight: 500;
-      box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    }
 
     .button_container {
       display: block;

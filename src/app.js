@@ -30,6 +30,10 @@ app.get("/cuadrante", (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/cuadrante.html'));
 });
 
+app.get("/repertorio", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/html/repertorio.html'));
+})
+
 app.get("/validacion", (req, res) => {
   res.sendFile(path.join(__dirname, '../public/html/validacion_gestion.html'));
 });

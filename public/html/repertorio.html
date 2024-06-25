@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repertorio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </noscript>
+
+    <style>
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/canciones.webp");
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        z-index: -1;
+      }
+    </style>
+
+    <style id="dynamic-styles"></style>
+
+    <link
+      rel="shortcut icon"
+      href="../imagenes/lifeboat.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/repertorio.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <div class="nav_title">
+          <a href="/">
+            <img class="nav_logo" src="../imagenes/lifeboat.png" alt="" />
+          </a>
+        </div>
+
+        <ul class="nav_link nav_link-menu">
+          <il class="nav_items">
+            <a href="/" class="nav_links">Inicio</a>
+          </il>
+          <il class="nav_items">
+            <a href="/cuadrante" class="nav_links">Cuadrante</a>
+          </il>
+          <il class="nav_items">
+            <a href="/repertorio" class="nav_links">Repertorio</a>
+          </il>
+          <il class="nav_items">
+            <a href="/validacion" class="nav_links">Gestión</a>
+          </il>
+          <img src="../imagenes/close.svg" class="nav_close" alt="img_close" />
+        </ul>
+        <div class="nav_menu">
+          <img src="../imagenes/menu_icon.svg" class="nav_img" alt="img_menu" />
+        </div>
+      </nav>
+
+      <section class="hero_container container">
+        <h1 class="hero_title">Repertorio</h1>
+        <p class="hero_paragraph">Cancionero de la alabanza</p>
+      </section>
+    </header>
+
+    <main>
+      <section class="table">
+        <div id="cuadrante">
+          <table>
+            <thead>
+              <tr>
+                <th>Cancionero</th>
+                <th>Artista</th>
+                <th>Tono Hombre</th>
+                <th>Tono Mujer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A TI, EL ALFA Y LA OMEGA</td>
+                <td>MARCOS WITT</td>
+                <td>F</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ABBA</td>
+                <td>TOMA TU LUGAR</td>
+                <td>C</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>AGNUS DEI</td>
+                <td>MARCO BARRIENTOS</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ALABA (ELEVATION WORSHIP)</td>
+                <td>EVAN CRAFT</td>
+                <td>G</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>AL QUE ESTÁ SENTADO EN EL TRONO</td>
+                <td>MARCOS BRUNET</td>
+                <td>A</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>AL REY</td>
+                <td>MARCOS BRUNET</td>
+                <td>F#m</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ALABARÉ AL SEÑOR (ANÁSTASIS)</td>
+                <td>HILLSONG UNITED</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>AMOR SIN CONDICIÓN</td>
+                <td>ABELS WORSHIP</td>
+                <td>C#m</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>AQUÍ ESTOY</td>
+                <td>HILLSONG UNITED</td>
+                <td>A</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ASÍ SERÁ</td>
+                <td>ELEVATION WORSHIP</td>
+                <td>F</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>AUNQUE MIS OJOS</td>
+                <td>JESÚS ADRIÁN ROMERO</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>BIENVENIDO SANTO ESPÍRITU</td>
+                <td>SARA GALINDO</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>BUENO ES ALABAR</td>
+                <td>DANILO MONTERO</td>
+                <td>E</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CAMBIARÉ MI TRISTEZA</td>
+                <td>VERTICAL</td>
+                <td>E</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CANTA AL SEÑOR</td>
+                <td>INGRID ROSARIO</td>
+                <td>D</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CANTA YA</td>
+                <td>PLANETSHAKERS</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CANTAREMOS DE TU AMOR</td>
+                <td>BARAK</td>
+                <td>F#m</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>COMO EN EL CIELO</td>
+                <td>ELEVATION WORSHIP</td>
+                <td>D</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CONSTRUIRÉ MI VIDA</td>
+                <td>AYRTON DAY</td>
+                <td>G</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CRISTO ERES HERMOSO</td>
+                <td>MARCOS BRUNET</td>
+                <td>G</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CUAN GRANDE ES DIOS</td>
+                <td>EEYEV</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CUERDAS DE AMOR</td>
+                <td>JULIO MELGAR</td>
+                <td>C#m</td>
+                <td>Em</td>
+              </tr>
+              <tr>
+                <td>DANZANDO</td>
+                <td>CHRISTINE D'CLARIO</td>
+                <td>D</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DANZAR</td>
+                <td>BARAK</td>
+                <td>Am</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DANZO EN EL RÍO</td>
+                <td>MIEL SAN MARCOS</td>
+                <td>G</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DE GLORIA EN GLORIA</td>
+                <td>EVAN CRAFT</td>
+                <td>A#m</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DE GLORIA EN GLORIA</td>
+                <td>MARCO BARRIENTOS</td>
+                <td>D</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DE GRACIA EN GRACIA</td>
+                <td></td>
+                <td>F#</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DERRAMO EL PERFUME</td>
+                <td>MONTE SANTO</td>
+                <td>Gm</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DESEABLE</td>
+                <td>MARCOS BRUNET</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DESEO ETERNO</td>
+                <td>MARCOS BRUNET</td>
+                <td>F#m</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DIGNO</td>
+                <td>MARCOS BRUNET</td>
+                <td>A</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DIOS DE LO IMPOSIBLE</td>
+                <td>MARCOS BARRIENTOS</td>
+                <td>Bm</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EL GRAN YO SOY</td>
+                <td>EEYEV</td>
+                <td>D</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EL PODER DE TU VICTORIA</td>
+                <td>ISRAEL HOUGHTON</td>
+                <td>A</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EN NOMBRE DE JESÚS</td>
+                <td>INGRID ROSARIO</td>
+                <td>G (INTRO)</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EN PRESENCIA DE JEHOVÁ</td>
+                <td>MARCO BARRIENTOS</td>
+                <td>A</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EN TU PRESENCIA</td>
+                <td>EEYEV</td>
+                <td>D</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EN TU PRESENCIA</td>
+                <td>HILLSONG WORSHIP</td>
+                <td>C</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>EN TU RIO</td>
+                <td>JESUS CULTURE</td>
+                <td>D</td>
+                <td>G#</td>
+              </tr>
+              <tr>
+                <td>ERES DIGNO DE ALABAR (Agnus Dei)</td>
+                <td>BlUEJAY HOUSE</td>
+                <td>G</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ERES TODOPODEROSO</td>
+                <td>DANILO MONTERO</td>
+                <td>Em</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ES TU GLORIA</td>
+                <td>KENNETH ROJAS</td>
+                <td>B</td>
+                <td></td>
+              </tr>
+              <tr>
+                <tr>
+                  <td>ESPERARÉ EN TÍ</td>
+                  <td>ELEVATION WORSHIP</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>ESTE ES MI DESEO</td>
+                  <td>MICHAEL W. SMITH</td>
+                  <td>F#</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>EXÁLTATE</td>
+                  <td>MARCOS WITT</td>
+                  <td>F#</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>FIESTA</td>
+                  <td>MIEL SAN MARCOS</td>
+                  <td>Cm</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>GENERACIÓN QUE DANZA</td>
+                  <td>JELLY SPYKER</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>GLORIOSO</td>
+                  <td>BJ PUTNAM</td>
+                  <td>A</td>
+                  <td>B</td>
+                </tr>
+                <tr>
+                  <td>GLORIOSO DÍA</td>
+                  <td>PASSION</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>GRACIA SOBLIME ES</td>
+                  <td>EEYEV</td>
+                  <td>G</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>GRACIAS DIOS</td>
+                  <td>MAVERICK CITY</td>
+                  <td>C</td>
+                  <td>B</td>
+                </tr>
+                <tr>
+                  <td>HABITACIÓN</td>
+                  <td>EEYEV</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>HAY LIBERTAD</td>
+                  <td>ART AGUILERA</td>
+                  <td>C#m</td>
+                  <td>F#m</td>
+                </tr>
+                <tr>
+                  <td>HAY UNA UNCIÓN</td>
+                  <td>CLAUDIO FREIDZON</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>HERMOSO MOMENTO</td>
+                  <td>KAIROS WORSHIP</td>
+                  <td>Em</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>HOSSANA</td>
+                  <td>MARCO BARRIENTOS</td>
+                  <td>Bm</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>JESUCRISTO BASTA</td>
+                  <td>UN CORAZÓN</td>
+                  <td>Bm</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>JESÚS EN EL CENTRO</td>
+                  <td>ISRAEL HOUGHTON</td>
+                  <td>F</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>JÚBILO</td>
+                  <td>MIEL SAN MARCOS</td>
+                  <td>C#</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>LA BONDAD DE DIOS</td>
+                  <td>CHURCH OF THE CITY</td>
+                  <td>F</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>LIBRE SOY</td>
+                  <td>DAVID SCARPETA</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>LO HARÁS OTRA VEZ</td>
+                  <td>ELEVATION WORSHIP</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>ME VINISTE A RESCATAR</td>
+                  <td>HILSSONG UNITED</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>CANTA AL SEÑOR</td>
+                  <td>INGRID ROSARIO</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>MI ESPERANZA ESTÁ EN JESÚS</td>
+                  <td>BETHEL MUSIC</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>MI TESTIMONIO</td>
+                  <td>ELEVATION WORSHIP</td>
+                  <td>A</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>MUESTRA A CRISTO</td>
+                  <td>SOVEREIGN GRACE</td>
+                  <td>G</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>NADA ES IMPOSIBLE</td>
+                  <td>MARCO BARRIENTOS</td>
+                  <td>G</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>NADA MÁS</td>
+                  <td>MAJO SOLÍS</td>
+                  <td>F#m</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>NADA NI NADIE</td>
+                  <td>LIVING</td>
+                  <td>G#</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>NO HAY LUGAR MÁS ALTO</td>
+                  <td>MIEL SAN MARCOS</td>
+                  <td>C</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>NO PUEDO CALLAR</td>
+                  <td>EEYEV</td>
+                  <td>F</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>NUEVA CANCIÓN</td>
+                  <td>BJ PUTNAM</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>PADRE NUESTRO</td>
+                  <td>MARCOS BRUNET</td>
+                  <td>G</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>PERFUME A TUS PIES</td>
+                  <td>EEYEV</td>
+                  <td>E</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>PODER DE TU VICTORIA</td>
+                  <td>ISRAEL HOUGHTON</td>
+                  <td>A</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>POR SIEMPRE</td>
+                  <td>KARI JOBE</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>PURIFÍCAME</td>
+                  <td>MARCOS WITT</td>
+                  <td>C</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>QUE SE ABRA EL CIELO</td>
+                  <td>CHRISTINE D'CLARIO</td>
+                  <td>G#</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>QUIERO CONOCER A JESÚS</td>
+                  <td>LLÉVAME DE VUELTA</td>
+                  <td>F#</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>RECIBE TODA LA GLORIA</td>
+                  <td>EEYEV</td>
+                  <td>Bm</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>REINARÁS</td>
+                  <td>ISRAEL HOUGHTON</td>
+                  <td>G#</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>REY</td>
+                  <td>CHRISTINE D'CLARIO</td>
+                  <td>E</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>REY DE JUSTICIA</td>
+                  <td>EEYEV</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>REY DE MI CORAZÓN</td>
+                  <td>DÉBORA ROMO</td>
+                  <td>G</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SEA LA LUZ</td>
+                  <td>MARCOS BRUNET</td>
+                  <td>D</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SEÑOR ERES FIEL</td>
+                  <td>MARCO BARRIENTOS</td>
+                  <td>E</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SOLO CRISTO</td>
+                  <td>HILLSONG UNITED</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>TE DOY GLORIA</td>
+                  <td>EEYEV</td>
+                  <td>C</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>TODO CAMBIÓ</td>
+                  <td>MAVERICK CITY</td>
+                  <td>F</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>TU GRACIA</td>
+                  <td>IVÁN MARTÍNEZ</td>
+                  <td>B</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>TUMBAS A JARDINES</td>
+                  <td>ELEVATION WORSHIP</td>
+                  <td>G</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>YA NO SOY ESCLAVO</td>
+                  <td>JULIO MELGAR</td>
+                  <td>G</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>WAY MAKER</td>
+                  <td>LEELAND</td>
+                  <td>C</td>
+                  <td></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <script async src="../../js/menu.js"></script>
+  </body>
+</html>
