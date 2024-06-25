@@ -137,9 +137,10 @@ body main{
 
 table, th, td {
   border-collapse: collapse;
-  padding: 1.6rem 0.8rem;
+  padding: 1.6rem 0.4rem;
   text-align: center;;
-  width: 2500px;
+  width: auto;
+  font-size: 14px;
 }
 
 
@@ -152,9 +153,8 @@ thead th {
 
 tbody td {
   position: relative;
-  min-width: 140px;
+  width: 136px;
   height: 44px;
-
 }
 
 tr:nth-child(even){
@@ -334,6 +334,7 @@ tr:nth-child(even){
     table, th, td {
       width: auto;
     }
+    
     .table {
       width: 100%;
     }
@@ -348,7 +349,7 @@ tr:nth-child(even){
     .styled-table thead {
         grid-column: 1; /* Colocar el encabezado en la primera columna */
         position: sticky;
-        width: 140px;
+        width: 120px;
         height: 100%;
     }
 
@@ -356,8 +357,8 @@ tr:nth-child(even){
       display: grid;
       height: 100%;
       grid-auto-flow: column;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
-      grid-auto-columns: 240px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
+      grid-auto-columns: 280px;
       overflow-x: scroll;
       background-color: #e4e4e463;
     }
@@ -365,10 +366,14 @@ tr:nth-child(even){
     .styled-table td,
     .styled-table th {
         display: block; /* Convertir td y th en elementos de bloque */
-        height: 34px;
+        height: 10px;
         margin: 0;
         text-align: center;
         padding-top: 30px;
+    }
+
+    .styled-table td {
+      width: auto;
     }
 
     .styled-table tr:nth-last-of-type(odd) {
