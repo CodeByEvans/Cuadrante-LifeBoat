@@ -17,7 +17,6 @@
     <link rel="preload" href="../imagenes/planner.webp" as="image">
     <link rel="preload" href="../imagenes/canciones.webp" as="image">
     <link rel="preload" href="../imagenes/gestion.webp" as="image">
-
  
     <link
       rel="shortcut icon"
@@ -35,23 +34,22 @@
           </a>
         </div>
 
-        <ul class="nav_link nav_link-menu">
-          <il class="nav_items">
-            <a href="/" class="nav_links">Inicio</a>
-          </il>
-          <il class="nav_items">
-            <a href="cuadrante" class="nav_links">Cuadrante</a>
-          </il>
-          <il class="nav_items">
-            <a href="repertorio" class="nav_links">Repertorio</a>
-          </il>
-          <il class="nav_items">
-            <a href="validacion" class="nav_links">Gestión</a>
-          </il>
-
-          <img src="imagenes/close.svg" class="nav_close" alt="img_close" />
-        </ul>
-
+          <ul class="nav_link nav_link-menu">
+            <il class="nav_items">
+              <a href="/" class="nav_links">Inicio</a>
+            </il>
+            <il class="nav_items">
+              <a href="cuadrante" class="nav_links">Cuadrante</a>
+            </il>
+            <il class="nav_items">
+              <a href="repertorio" class="nav_links">Repertorio</a>
+            </il>
+            <il class="nav_items">
+              <a href="validacion" class="nav_links">Gestión</a>
+            </il>
+  
+            <img src="imagenes/close.svg" class="nav_close" alt="img_close" />
+          </ul>
         <div class="nav_menu">
           <img src="imagenes/menu_icon.svg" class="nav_img" alt="img_menu" />
         </div>
@@ -65,26 +63,44 @@
     </header>
 
     <main>
+      <h2 class="subtitle">Otros listados</h2>
       <section class="container about">
-        <h2 class="subtitle">Otros listados</h2>
 
         <div class="about_main">
-          <a href="repertorio">
-            <article class="about_icon">
-              <h3 class="about_title">Repertorio</h3>
-              <p class="about_paragraph">Lista de canciones</p>
-            </article>
-          </a>
+            <a href="repertorio" class="about_icon">
+              <article>
+                <h3 class="about_title">Repertorio</h3>
+                <p class="about_paragraph">Lista de canciones</p>
+              </article>
+            </a>
 
-          <a href="validacion">
-            <article class="about_icon2">
-              <h3 class="about_title">Gestión</h3>
-              <p class="about_paragraph">Gestión del cuadrante</p>
-            </article>
-          </a>
+            <a href="validacion" class="about_icon2">
+              <article>
+                <h3 class="about_title">Gestión</h3>
+                <p class="about_paragraph">Gestión del cuadrante</p>
+              </article>
+            </a>
         </div>
       </section>
     </main>
     <script async src="js/menu.js"></script>
+    <script>
+      function verificarVisibilidad (entries) {
+        let entry = entries[0];
+        if(entry.isIntersecting) {
+          icon.classList.add("about_icon--show");
+          icon2.classList.add("about_icon2--show");
+        }
+      }
+      
+      let observer = new IntersectionObserver(verificarVisibilidad, {});
+
+      let icon = document.querySelector(".about_icon");
+      let icon2 = document.querySelector(".about_icon2");
+
+      observer.observe(icon);
+      observer.observe(icon2);
+
+    </script>
   </body>
 </html>

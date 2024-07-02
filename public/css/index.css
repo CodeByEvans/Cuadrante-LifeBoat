@@ -30,6 +30,17 @@ button, a {
     display: grid;
     grid-template-rows: 100px 1fr;
     color: white;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } 
+    to {
+        opacity: 1;
+    }
 }
 
 .hero::before {
@@ -115,12 +126,36 @@ button, a {
 .hero_title{
     font-size: 3.8rem;
     margin-bottom: -6px;
+    border-right: 5px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: 
+    typing 2s,
+    cursor .4s step-end infinite alternate;
 }
 
 .hero_paragraph{
     margin-bottom: 20px;
     font-size: 1.4rem;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeInUp 2s ease forwards;
+}
 
+@keyframes cursor {
+    50% { border-color: transparent; }
+}
+
+@keyframes typing {
+    from { width: 0 }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .cta {
@@ -133,7 +168,7 @@ button, a {
     padding: 10px 30px;
     border-radius: 32px;
     scale: 1.3;
-    transition: transform 0.1s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .cta:hover {
@@ -152,6 +187,7 @@ button, a {
     color: var(--color-title);
     font-size: 3rem;
     margin-bottom: 25px;
+    text-align: center;
 }
 
 
@@ -160,21 +196,28 @@ button, a {
     display: grid;
     width: 90%;
     margin: 0 auto -20px;
-    gap: 16em;
+    gap: 7em;
     overflow: hidden;
     grid-template-columns: repeat(auto-fit, minmax(260px, auto));
     justify-content: center;
     padding-bottom: 30px;
 }
 
-.about_icon {
+.about_icon,
+.about_icon2 {
     position: relative;
     width: 300px;
     height: 600px;
     border-radius: 10px;
     overflow: hidden;
     margin: 0 auto;
-    transition: transform .2s ease;
+    transform: scale(0.6);
+    transition: all .3s ease-in;
+}
+
+.about_icon--show, .about_icon2--show {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .about_icon::before {
@@ -190,16 +233,6 @@ button, a {
     background-repeat: no-repeat;   
     filter: grayscale(100%) blur(0.6px);
     transition: filter .2s ease;
-}
-
-.about_icon2 {
-    position: relative;
-    width: 300px;
-    height: 600px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 0 auto;
-    transition: transform .2s ease;
 }
 
 .about_icon2::before {
@@ -266,6 +299,10 @@ button, a {
 /* Media Querys */
 
 @media (max-width: 800px) {
+    .no-scroll {
+        overflow: hidden;
+    }
+
     .nav_logo {
         width: 13rem;
         height: 13rem;
@@ -276,21 +313,29 @@ button, a {
     }
     
     .nav_link-menu {
-        position: fixed;
-        top: 0; 
-        right: 0;
-        width: 100%;
+        position: absolute;
+        top: -24px; 
+        right: -8px;
+        bottom: 0;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: #1c1c1c;
+        padding: 6rem 3rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
+        align-items: end;
+        gap: 2rem;
+        font-family: sans-serif;
         z-index: 100;
         opacity: 0;
         pointer-events: none;
         transition: .3s;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
     }
+
+    .nav_link-menu a {
+        font-size: 1.4rem;
+    }
+    
 
     .nav_link--show {
         --show: block;
@@ -299,10 +344,11 @@ button, a {
     }
 
     .nav_close {
+        display: block;
         position: absolute; 
         top: 30px;
-        right: 30px;
-        width: 30px;
+        right: 26px;
+        scale: .7;
         cursor: pointer;
     }
 
@@ -310,13 +356,10 @@ button, a {
         transform: translateX(0);
     }
 
-    .nav_close {
-        display: block;
-    }
-
     .hero_title {
         font-size: 2.8rem;
         margin: 0;
+        white-space: wrap;
     }
 
     .hero_paragraph {
@@ -334,19 +377,29 @@ button, a {
 
     .about_main {
         gap: 4em;
-        padding-top: 30px;
+        padding: 20px;
         display: grid;
         width: 90%;
         grid-template-columns: repeat(auto-fit, minmax(260px, auto));
         justify-content: center;
-        padding-bottom: 30px;
     }
     
     .about_icon,
     .about_icon2 {
-        width: 80%;
         margin: 0 auto;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all .3s ease-in;
+    }
+
+    .about_icon--show, .about_icon2--show {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .about_main a {
+        width: 90%;
     }
     
     .about_title {
