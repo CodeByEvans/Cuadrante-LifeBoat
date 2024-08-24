@@ -33,7 +33,7 @@
 
     <link
       rel="shortcut icon"
-      href="../imagenes/lifeboat.png"
+      href="imagenes/favicon.ico"
       type="image/x-icon"
     />
     <link rel="stylesheet" href="../css/repertorio.css" />
@@ -92,6 +92,14 @@
                 <td>F</td>
                 <td></td>
               </tr>
+              <tr class="hidden-row">
+                <td colspan="4">
+                    <div class="video-container">
+                        <!-- Embed del video de YouTube -->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/itSIdSEbiq8" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </td>
+            </tr>
               <tr>
                 <td>ABBA</td>
                 <td>TOMA TU LUGAR</td>
@@ -664,6 +672,16 @@
 
     </main>
 
+        <script>
+        function toggleRow(button) {
+            var hiddenRow = button.closest('tr').nextElementSibling;
+            if (hiddenRow.style.display === "none" || hiddenRow.style.display === "") {
+                hiddenRow.style.display = "table-row";
+            } else {
+                hiddenRow.style.display = "none";
+            }
+        }
+    </script>
     <script async src="../../js/menu.js"></script>
   </body>
 </html>

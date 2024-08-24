@@ -2,7 +2,6 @@
 
 body{
     font-family: "Montserrat", sans-serif;
-    
 }
 
 
@@ -51,12 +50,13 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
+    width: 66%;
 }
 
 .nav_logo {
     display: block;
-    width: 16rem;
-    height: 16rem;
+    width: 12rem;
+    height: 5rem;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -124,7 +124,7 @@ header {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 body main{
@@ -135,34 +135,65 @@ body main{
 }
 
 
-table, th, td {
+#dataTable_filter input {
+  width: 68%;
+  height: 34px;
+  font-size: 15px;
+  text-align: center;
+  padding: 0 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin: 10px;
+}
+
+table.dataTable{
+  table-layout: fixed;
+  padding:20px;
+}
+
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+  padding: 10px;
+  height: 100px;
+  width: 100px;
+}
+
+#dataTable.styled-table, 
+#dataTable.styled-table th, 
+#dataTable.styled-table td {
   border-collapse: collapse;
-  padding: 1.6rem 0.6rem;
-  text-align: center;;
-  width: auto;
-  font-size: 14px;
+  text-align: center;
+  align-items: center;
+  font-size: 12px;
+
 }
 
 
-thead th {
-  position: relative;
-  top: 0;
-  left: 0;
+table.dataTable thead th {
   background-color: #A0E9FF;
+  white-space: wrap;
+  padding: 14px 10px;
+}
+
+@media (min-width: 768px) {
+  #dataTable.styled-table th:first-child {
+    border-top-left-radius: 10px;
+  }
+  
+  #dataTable.styled-table th:last-child {
+    border-top-right-radius: 10px;
+  }
+}
+
+#dataTable.styled-table tbody td:first-child {
   white-space: nowrap;
+  padding: 6px;
 }
 
-tbody td {
-  position: relative;
-  width: 136px;
-  height: 44px;
-}
 
-tbody td:first-child {
-  white-space: nowrap;
-}
-
-tr:nth-child(even){
+#dataTable.styled-table tr:nth-child(even){
   background-color: #eceded;
 }
 
@@ -175,43 +206,31 @@ tr:nth-child(even){
 
 .table {
   width: 100%;
+  
 
   box-shadow: 0 .4rem .8rem #0005;
   border-radius: .8rem;
-
-  font-size: 16px;
-  overflow: hidden;
-}
-
-.day-name {
-  border-radius: 4px;
-  padding: 10px;
-  font-weight: 545;
-  z-index: 1;
-  position: sticky;
-  left: 0;
-    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .jueves {
   background-color: #DBE2EF;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 6px;
+  border-radius: 8px;
   font-weight: 550;
   color: rgb(99, 98, 98);
 }
 
 .sabado {
   background-color: #3F72AF;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 6px;
+  border-radius: 8px;
   color: white;
 }
 
 .domingo {
   background-color: #112D4E;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 6px;
+  border-radius: 8px;
   color: white;
 }
 
@@ -220,6 +239,7 @@ tr:nth-child(even){
   margin: 0;
   overflow:auto;
 }
+
 
   .button_container {
     display: block;
@@ -234,9 +254,10 @@ tr:nth-child(even){
     height: 34px;
     position: absolute;
     right: 0;
-    animation: rebote 0.5s 3 alternate;
-    border-radius: 4px 0 0 0;
+    border-radius: 4px;
     transform: scale(1);
+    background: none;
+    transition: all 0.3s;
   }
 
   .button_left {
@@ -244,22 +265,20 @@ tr:nth-child(even){
     height: 34px;
     position: absolute;
     left: 0;
-    animation: rebote 0.5s 3 alternate;
     border-radius: 0 4px 0 0;
-    transform: scale(1);
+    transform: rotate(180deg);
+    background: none;
+    transition: all 0.3s;
   }
 
-  .button_right:hover, .button_left:hover {
+  .button_right:hover{
     cursor: pointer;
+    transform: scale(1.2); /* Mantén la rotación y agrega la escala */
   }
 
-  @keyframes rebote {
-    from {
-      transform: scale(1.2);
-    }
-    to {
-      transform: scale(1);
-    }
+  .button_left:hover {
+    cursor: pointer;
+    transform: rotate(180deg) scale(1.2); /* Mantén la rotación y agrega la escala */
   }
 
   @media (max-width: 800px) {
@@ -267,9 +286,11 @@ tr:nth-child(even){
       overflow: hidden;
   }
 
+
   .nav_logo {
-      width: 13rem;
-      height: 13rem;
+    width: 11rem;
+    height: 5rem;
+    margin: 0 10px;
   }
 
   .nav_menu {
@@ -342,35 +363,41 @@ tr:nth-child(even){
     .week_paragraph {
       font-size: 1.3rem;
     }
-    
-    table, th, td {
-      width: auto;
-    }
-    
-    .table {
-      width: 100%;
+
+    #dataTable_filter input {
+      width: 60%;
+      height: 40px;
+      font-size: 15px;
+      text-align: center;
+      padding: 0 20px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      outline: none;
+      margin: 10px;
     }
 
-    .styled-table {
+    #dataTable.styled-table {
         display: grid;
         grid-template-columns: auto 1fr; /* Dividir la tabla en dos columnas, una para el encabezado y otra para el cuerpo */
-
         padding: 0;
+        margin: 0 0;
+        width: 100%;
     }
 
-    .styled-table thead {
+    #dataTable.styled-table thead th {
         grid-column: 1; /* Colocar el encabezado en la primera columna */
         position: sticky;
-        width: 120px;
-        height: 100%;
+        padding: 2rem 0.4rem;
+        white-space: nowrap;
     }
 
-    .styled-table tbody {
+    #dataTable.styled-table thead th:first-child {
+      border-top-right-radius: 4px;
+    }
+
+    #dataTable.styled-table tbody {
       display: grid;
-      height: 100%;
       grid-auto-flow: column;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Columnas automáticas que se ajustan al contenido */
-      grid-auto-columns: 260px;
       overflow-x: auto;
       scroll-snap-type: x mandatory; /* Activa el scroll-snap en el eje X */
       scroll-snap-stop: always;
@@ -378,12 +405,12 @@ tr:nth-child(even){
       background-color: #e4e4e463;
     }
 
-    .styled-table tbody tr {
+    #dataTable.styled-table tbody tr {
       scroll-snap-align: start; /* Cada fila se alinea al inicio del contenedor en el scroll */
     }
 
-    .styled-table td,
-    .styled-table th {
+    #dataTable.styled-table td,
+    #dataTable.styled-table th {
         display: block; /* Convertir td y th en elementos de bloque */
         height: 10px;
         display: flex;
@@ -391,14 +418,13 @@ tr:nth-child(even){
         text-align: center;
         justify-content: center;
         align-items: center;
-        padding-top: 30px;
+        padding: 2rem 0;
+        border: none;
+        font-size: 13px;
+        width: auto;
     }
 
-    .styled-table td {
-      width: auto;
-    }
-
-    .styled-table tr:nth-last-of-type(odd) {
+    #dataTable.styled-table tr:nth-last-of-type(odd) {
         background: transparent;
     }
 

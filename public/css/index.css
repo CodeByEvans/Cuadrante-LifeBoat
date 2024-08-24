@@ -63,12 +63,13 @@ button, a {
     height: 100%;
     display: flex;
     align-items: center;
+    width: 66%;
 }
 
 .nav_logo {
     display: block;
-    width: 16rem;
-    height: 16rem;
+    width: 12rem;
+    height: 5rem;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -188,6 +189,16 @@ button, a {
     font-size: 3rem;
     margin-bottom: 25px;
     text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -304,8 +315,9 @@ button, a {
     }
 
     .nav_logo {
-        width: 13rem;
-        height: 13rem;
+        width: 11rem;
+        height: 5rem;
+        margin: 0 10px;
     }
 
     .nav_menu {

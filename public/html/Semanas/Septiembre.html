@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Julio</title>
+    <title>Septiembre</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/guitar.webp");
+        background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url("../imagenes/drums.webp");
         background-size: cover;
         background-position: center;
         border-top-left-radius: 8px;
@@ -33,9 +33,13 @@
 
     <link
       rel="shortcut icon"
-      href="../imagenes/lifeboat.png"
+      href="../imagenes/favicon.ico"
       type="image/x-icon"
     />
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
     <link rel="stylesheet" href="../css/meses.css" />
   </head>
   <body>
@@ -68,20 +72,56 @@
       </nav>
 
       <section class="hero_container container">
-        <h1 class="hero_title">Julio</h1>
-        <p class="hero_paragraph">Listado de Julio</p>
+        <h1 class="hero_title">Septiembre</h1>
+        <p class="hero_paragraph">Listado de Septiembre</p>
       </section>
     </header>
 
     <main>
       <section class="table">
-        <div id="cuadrante"></div>
+        <div id="cuadrante">
+          <table id= "dataTable" class="styled-table">
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>G.Acústica</th>
+                <th>G.Eléctrica</th>
+                <th>Bajo</th>
+                <th>Batería</th>
+                <th>Piano</th>
+                <th class="trumpet_header">Trompeta</th>
+                <th class="acousticGuitar2_header">G.Acústica 2</th>
+                <th class="electricGuitar2_header">G.Eléctrica 2</th>
+                <th>Dirección</th>
+                <th>Director Musical</th>
+                <th>Voz 1</th>
+                <th>Voz 2</th>
+                <th>Voz 3</th>
+                <th class="voz4_header">Voz 4</th>
+                <th>Canción 1</th>
+                <th>Canción 2</th>
+                <th>Canción 3</th>
+                <th class="song4_header">Canción 4</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+          </table>
+        </div>
         <section class="button_container">
           <div class="button_right">
-            <a href="/cuadrante/agosto" class="button_action">
+            <a href="/cuadrante/Octubre" class="button_action">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>   
+            </a>
+          </div>
+
+          <div class="button_left">
+            <a href="/cuadrante/Agosto" class="button_action">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg> 
             </a>
           </div>
         </section>
@@ -103,11 +143,13 @@
 
       window.addEventListener('resize', handleResize);
     </script>
-
-  
-
+    
     <script src="../../js/semanas/daysToFetch.js"></script>
-    <script src="../../js/semanas/mes1.js"></script>
+    <script src="../../js/semanas/mes2.js"></script>
     <script async src="../../js/menu.js"></script>
+    <!-- JQuery -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <!-- Datatables -->
+     <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   </body>
 </html>

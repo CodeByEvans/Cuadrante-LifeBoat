@@ -1,44 +1,42 @@
-const selectedDates = Agosto;
+const selectedDates = Septiembre;
+let dataTable;
+let dataTableIsInitialized = false;
 
-document.addEventListener("DOMContentLoaded", async () => {
-  await createTableHeader();
-  await fetchDataAndAddRows();
-  await hideEmptySections();
-});
+const dataTableOptions = {
+  dom: '<"top"fi>rt<"bottom"lp>',
+  responsive: true,
+  autoWidth: false,
+  language: {
+    search: "",
+    searchPlaceholder: "Buscar..."
 
-async function createTableHeader() {
-  const cuadranteDiv = document.getElementById("cuadrante");
-  cuadranteDiv.innerHTML = `
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>Día</th>
-          <th>G.Acústica</th>
-          <th>G.Eléctrica</th>
-          <th>Bajo</th>
-          <th>Batería</th>
-          <th>Piano</th>
-          <th class="trumpet_header">Trompeta</th>
-          <th class="acousticGuitar2_header">G.Acústica 2</th>
-          <th class="electricGuitar2_header">G.Eléctrica 2</th>
-          <th>Dirección</th>
-          <th>Director Musical</th>
-          <th>Voz 1</th>
-          <th>Voz 2</th>
-          <th>Voz 3</th>
-          <th class="voz4_header">Voz 4</th>
-          <th>Canción 1</th>
-          <th>Canción 2</th>
-          <th>Canción 3</th>
-          <th class="song4_header">Canción 4</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody">
-      </tbody>
-    </table>`;
+  },
+  paging: false,
+  pagingType: "simple",
+  info: false,
+  ordering: false,
+  columnDefs: [
+    { width: "100%", targets: '_all' },
+  ]
+  }
+
+
+async function initDataTable(){
+  if (dataTableIsInitialized) {
+    dataTable.destroy();
+  }
+
+  await listTable();
+
+  dataTable = $('#dataTable').DataTable(dataTableOptions);
+
+  dataTableIsInitialized = true;
+
+  console.log(dataTable);
+  console.log(dataTableIsInitialized);
 }
 
-async function fetchDataAndAddRows() {
+async function listTable() {
   const fetchedData = [];
   await Promise.all(selectedDates.map(async (date) => {
     try {
@@ -94,52 +92,7 @@ async function fetchDataAndAddRows() {
   });
 }
 
-async function fetchDataForDates(selectedDates) {
-  return Promise.all(selectedDates.map(async (selectedDate) => {
-    try {
-      const response = await fetch(`/api/cuadrante/${selectedDate}`);
-      if (!response.ok) {
-        throw new Error("No hay datos para esta fecha");
-      }
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching data for date', selectedDate, ':', error);
-      return {};
-    }
-  }));
-}
-async function hideEmptySections() {
-  const dataArray = await fetchDataForDates(selectedDates);
+window.addEventListener('load', async () => {
+  await initDataTable();
+});
 
-  const checkAllEmpty = (className, dataKey) => {
-    return dataArray.every(data => !data[dataKey] || data[dataKey].trim() === "");
-  };
-
-  const toggleElements = (className, dataKey) => {
-    const header = document.querySelector(`.${className}_header`);
-    const bodies = document.querySelectorAll(`.${className}_body`);
-
-    if (checkAllEmpty(className, dataKey)) {
-      header.style.display = 'none';
-      bodies.forEach(body => {
-        body.style.display = 'none';
-      });
-    } else if (window.innerWidth <= 800) {
-      header.style.display = 'block';
-      bodies.forEach(body => {
-        body.style.display = '';
-      });
-    } else {
-      header.style.display = 'table-cell';
-      bodies.forEach(body => {
-        body.style.display = '';
-      });
-    }
-  };
-
-  toggleElements('trumpet', 'trumpet');
-  toggleElements('acousticGuitar2', 'acousticGuitar2');
-  toggleElements('electricGuitar2', 'electricGuitar2');
-  toggleElements('voz4', 'voz4');
-  toggleElements('song4', 'song4');
-}

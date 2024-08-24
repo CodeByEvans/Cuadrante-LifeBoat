@@ -1,4 +1,4 @@
-const selectedDates = Agosto;
+const selectedDates = Octubre;
 let dataTable;
 let dataTableIsInitialized = false;
 
@@ -9,6 +9,7 @@ const dataTableOptions = {
   language: {
     search: "",
     searchPlaceholder: "Buscar..."
+
   },
   paging: false,
   pagingType: "simple",
@@ -16,7 +17,7 @@ const dataTableOptions = {
   ordering: false,
   columnDefs: [
     { width: "100%", targets: '_all' },
-  ],
+  ]
   }
 
 
