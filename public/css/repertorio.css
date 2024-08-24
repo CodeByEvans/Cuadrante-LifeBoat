@@ -227,6 +227,10 @@ tr:nth-child(even){
       overflow: hidden;
   }
 
+  .nav {
+    width: 90%;
+  }
+
   .nav_logo {
     width: 11rem;
     height: 5rem;

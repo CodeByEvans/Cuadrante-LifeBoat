@@ -286,6 +286,10 @@ table.dataTable thead th {
       overflow: hidden;
   }
 
+  .nav {
+    width: 90%;
+  }
+
 
   .nav_logo {
     width: 11rem;
@@ -384,6 +388,10 @@ table.dataTable thead th {
         width: 100%;
     }
 
+    #dataTable.styled-table thead {
+      width: 136.75px;
+    }
+
     #dataTable.styled-table thead th {
         grid-column: 1; /* Colocar el encabezado en la primera columna */
         position: sticky;
@@ -398,18 +406,21 @@ table.dataTable thead th {
     #dataTable.styled-table tbody {
       display: grid;
       grid-auto-flow: column;
+      grid-auto-columns: 340px;
+      grid-auto-rows: 1406px;
       overflow-x: auto;
+      overflow-y: hidden;
       scroll-snap-type: x mandatory; /* Activa el scroll-snap en el eje X */
       scroll-snap-stop: always;
       scroll-behavior: smooth;
       background-color: #e4e4e463;
+      height: 1406px;
     }
 
     #dataTable.styled-table tbody tr {
       scroll-snap-align: start; /* Cada fila se alinea al inicio del contenedor en el scroll */
     }
 
-    #dataTable.styled-table td,
     #dataTable.styled-table th {
         display: block; /* Convertir td y th en elementos de bloque */
         height: 10px;
@@ -418,10 +429,27 @@ table.dataTable thead th {
         text-align: center;
         justify-content: center;
         align-items: center;
-        padding: 2rem 0;
         border: none;
         font-size: 13px;
         width: auto;
+    }
+
+    #dataTable.styled-table td {
+        display: block; /* Convertir td y th en elementos de bloque */
+        height: 54px;
+        display: flex;
+        margin: 0;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        padding: auto 0;
+        border: none;
+        font-size: 13px;
+        width: auto;
+    }
+
+    #dataTable.styled-table td:first-child {
+      height: 62px;
     }
 
     #dataTable.styled-table tr:nth-last-of-type(odd) {
