@@ -165,7 +165,6 @@ table.dataTable tbody td {
 #dataTable.styled-table td {
   border-collapse: collapse;
   text-align: center;
-  align-items: center;
   font-size: 12px;
 
 }
@@ -189,7 +188,7 @@ table.dataTable thead th {
 
 #dataTable.styled-table tbody td:first-child {
   white-space: nowrap;
-  padding: 6px;
+  padding: 0;
 }
 
 
