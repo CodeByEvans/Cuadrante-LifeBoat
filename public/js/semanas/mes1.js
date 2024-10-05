@@ -1,4 +1,4 @@
-const selectedDates = Agosto;
+const selectedDates = Octubre;
 let dataTable;
 let dataTableIsInitialized = false;
 

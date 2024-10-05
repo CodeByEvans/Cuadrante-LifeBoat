@@ -47,16 +47,16 @@ app.get("/gestion", (req, res) => {
 // ------------------------------------------------
 
 // Ruta para los meses.
-app.get("/cuadrante/agosto", (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/html/Semanas/Agosto.html'));
-});
-
-app.get("/cuadrante/septiembre", (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/html/Semanas/Septiembre.html'));
-});
-
 app.get("/cuadrante/octubre", (req, res) => {
   res.sendFile(path.join(__dirname, '../public/html/Semanas/Octubre.html'));
+})
+
+app.get("/cuadrante/noviembre", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/html/Semanas/Noviembre.html'))
+})
+
+app.get("/cuadrante/diciembre", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/html/Semanas/Diciembre.html'))
 })
 // ------------------------------------------------
 
